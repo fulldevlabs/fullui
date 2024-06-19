@@ -22,6 +22,7 @@ console.log(rest)
       Object.entries(rest).map(([key, value]) => {
         return (
           <StoryField
+            component={rest.props.component}
             {key}
             {value}
           />
@@ -37,7 +38,15 @@ console.log(rest)
       '/?component=' +
       document.getElementById('component').value +
       '&html=' +
-      document.getElementById('html').value
+      document.getElementById('html').value +
+      '&color=' +
+      document.getElementById('color').value +
+      '&size=' +
+      document.getElementById('size').value +
+      '&variant=' +
+      document.getElementById('variant').value +
+      '&theme=' +
+      document.getElementById('theme').value
   }
 </script>
 

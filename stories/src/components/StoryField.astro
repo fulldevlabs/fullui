@@ -1,10 +1,31 @@
 ---
-const { ...rest } = Astro.props
+import { getEntry } from 'astro:content'
+
+const { component, ...rest } = Astro.props
+
+const componentData: any = await getEntry('components', component)
 ---
 
 {
   Object.entries(rest.value).map(([key, value]: [string, any]) => {
     if (key !== 'component' && value !== 'undefined') {
+      if (componentData.data.props[key].options) {
+        return (
+          <div>
+            <label>{key}</label>
+            <select
+              id={key}
+              onchange="updateUrl()"
+            >
+              {componentData.data.props[key].options.map((option: string) => {
+                if (option === value) return <option selected>{option}</option>
+                return <option>{option}</option>
+              })}
+            </select>
+          </div>
+        )
+      }
+
       return (
         <div>
           <label>{key}</label>
@@ -16,16 +37,16 @@ const { ...rest } = Astro.props
           />
         </div>
       )
-    } else {
-      return (
-        <div>
-          <input
-            id={key}
-            type="hidden"
-            value={value}
-          />
-        </div>
-      )
     }
+
+    return (
+      <div>
+        <input
+          id={key}
+          type="hidden"
+          value={value}
+        />
+      </div>
+    )
   })
 }
