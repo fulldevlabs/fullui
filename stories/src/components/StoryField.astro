@@ -1,9 +1,10 @@
 ---
 import { getEntry } from 'astro:content'
+import { dash } from 'radash'
 
 const { component, ...rest } = Astro.props
 
-const componentData: any = await getEntry('components', component)
+const componentData: any = await getEntry('components', dash(component))
 ---
 
 {

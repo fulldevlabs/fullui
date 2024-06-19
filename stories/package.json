@@ -12,8 +12,9 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
-    "fulldev-ui": "workspace:*",
     "astro": "^4.6.1",
+    "fulldev-ui": "workspace:*",
+    "radash": "^12.1.0",
     "typescript": "^5.4.5"
   }
 }

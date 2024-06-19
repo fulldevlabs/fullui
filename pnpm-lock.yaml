@@ -135,6 +135,9 @@ importers:
       fulldev-ui:
         specifier: workspace:*
         version: link:../package
+      radash:
+        specifier: ^12.1.0
+        version: 12.1.0
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
