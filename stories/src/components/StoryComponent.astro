@@ -8,4 +8,4 @@ const { component, ...rest } = Astro.props
 const Component = components.find((c) => c.file.endsWith(component + '.astro'))
 ---
 
-{Component ? <Component {...rest} /> : ''}
+{Component && <Component {...rest} />}
