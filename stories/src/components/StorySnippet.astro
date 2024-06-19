@@ -1,9 +1,10 @@
 ---
 interface Props {
   name: string
+  props: Object
 }
 
-const { name, ...rest } = Astro.props
+const { name, props } = Astro.props
 ---
 
 <div class="snippet">
@@ -11,7 +12,7 @@ const { name, ...rest } = Astro.props
     <p>
       {'<' + name + ' '}
       {
-        Object.entries(rest.props).map(([key, value]) => {
+        Object.entries(props).map(([key, value]) => {
           if (key !== 'component') {
             if (value !== 'undefined') return key + '="' + value + '" '
           }

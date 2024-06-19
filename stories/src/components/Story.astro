@@ -2,10 +2,9 @@
 import StoryComponent from './StoryComponent.astro'
 import StoryDetails from './StoryDetails.astro'
 import StoryField from './StoryField.astro'
+import StorySnippet from './StorySnippet.astro'
 
 const { ...rest } = Astro.props
-
-console.log(rest)
 ---
 
 <div class="story">
@@ -15,6 +14,13 @@ console.log(rest)
 
   <div class="details">
     <StoryDetails name={rest.props.component} />
+  </div>
+
+  <div class="snippet">
+    <StorySnippet
+      name={rest.props.component}
+      props={rest.props}
+    />
   </div>
 
   <div class="inputs">
