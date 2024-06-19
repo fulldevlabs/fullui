@@ -1,7 +1,12 @@
 ---
 name: Textarea
 props:
-    component: Textarea
-    placeholder: Textarea
-    rows: 8
+  - name: theme
+    options: [light, dark]
+    value: base
+  - name: size
+    options: [sm, md, lg]
+    value: md
+  - name: html
+    value: Textarea
 ---

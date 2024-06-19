@@ -1,5 +1,5 @@
 ---
-name: Label
+name: Paragraph
 props:
   - name: variant
     options: [solid, outline]
@@ -11,5 +11,5 @@ props:
     options: [sm, md, lg]
     value: md
   - name: html
-    value: Label
+    value: Paragraph
 ---

@@ -1,9 +1,15 @@
 ---
 name: Button
 props:
-    component: Button
-    variant: solid
-    color: base
-    size: xl
-    html: Button
+  - name: variant
+    options: [solid, outline]
+    value: solid
+  - name: color
+    options: [base, brand]
+    value: base
+  - name: size
+    options: [sm, md, lg]
+    value: md
+  - name: html
+    value: Button
 ---

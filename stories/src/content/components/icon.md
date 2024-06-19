@@ -1,8 +1,15 @@
 ---
 name: Icon
 props:
-    component: Icon
-    color: base
-    size: xl
-    name: book
+  - name: variant
+    options: [solid, outline]
+    value: solid
+  - name: color
+    options: [base, brand]
+    value: base
+  - name: size
+    options: [sm, md, lg]
+    value: md
+  - name: html
+    value: Icon
 ---
