@@ -6,7 +6,7 @@ interface Props {
 const { name, ...rest } = Astro.props
 ---
 
-<div class="code-snippet">
+<div class="snippet">
   <div class="code">
     <p>
       {'<' + name + ' '}
@@ -23,7 +23,7 @@ const { name, ...rest } = Astro.props
 </div>
 
 <style>
-  .code-snippet {
+  .snippet {
     margin: 20px 10px;
 
     .code {
