@@ -124,6 +124,21 @@ importers:
         specifier: ^4.5.5
         version: 4.10.2(sass@1.77.5)(typescript@5.4.5)
 
+  stories:
+    dependencies:
+      '@astrojs/check':
+        specifier: ^0.5.10
+        version: 0.5.10(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.5)
+      astro:
+        specifier: ^4.6.1
+        version: 4.10.2(sass@1.77.5)(typescript@5.4.5)
+      fulldev-ui:
+        specifier: workspace:*
+        version: link:../package
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+
 packages:
 
   /@alloc/quick-lru@5.2.0:
