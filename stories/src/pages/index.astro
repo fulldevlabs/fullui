@@ -1,7 +1,10 @@
 ---
+import Sidebar from '../components/Sidebar.astro'
 import Story from '../components/Story.astro'
 ---
 
+<Sidebar />
+<br />
 <Story
   props={{
     component: Astro.url.searchParams.get('component')
