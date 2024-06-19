@@ -1,11 +1,22 @@
 ---
-const components = await Astro.glob(
-  '../../node_modules/fulldev-ui/src/components/**/*.astro'
-)
+import { Button, Badge } from 'fulldev-ui'
+
+const allowedComponents: any = {
+  Button, 
+  Badge
+} as const
+
+interface Props {
+  component: string
+}
 
 const { component, ...rest } = Astro.props
 
-const Component = components.find((c) => c.file.endsWith(component + '.astro'))
+const Component = allowedComponents[component.charAt(0).toUpperCase() + component.slice(1)]
 ---
 
-{Component && <Component {...rest} />}
+{
+  Component ? (
+    <Component {...rest} />
+  ) : ''
+}

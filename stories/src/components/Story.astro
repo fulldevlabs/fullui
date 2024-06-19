@@ -1,10 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content'
-import { Children, Heading, Icon, Link, Text } from 'fulldev-ui'
-import CodeSnippet from './CodeSnippet.astro'
+import { Children } from 'fulldev-ui'
 import StoryDetails from './StoryDetails.astro'
+import StoryInputs from './StoryInputs.astro'
 
-type Props = CollectionEntry<'components'>['data']
+interface Props {
+  name?: string
+}
 
 const { name, ...rest } = Astro.props
 ---
@@ -17,29 +18,13 @@ const { name, ...rest } = Astro.props
       </div>
 
       <div class="details">
-        <Heading size="xs">Props</Heading>
+        <StoryDetails name={name} />
+      </div>
 
-        <Text size="sm">
-          Here are the available Props for the <b>{name}</b> component.
-        </Text>
-
-        <CodeSnippet
-          name={name}
-          {...rest}
-        />
-
-        <Link
-          size="sm"
-          href={'https://ui.full.dev/'}
-          variant="accent"
-          target="_blank"
-        >
-          Read the documentation <Icon name="external-link" />
-        </Link>
-
+      <div class="inputs">
         {Object.entries(rest).map(([key, value]) => {
           return (
-            <StoryDetails
+            <StoryInputs
               {key}
               {value}
             />
