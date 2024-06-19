@@ -1,0 +1,16 @@
+---
+import { Button } from 'fulldev-ui'
+
+const allowedComponents: any = {
+  Button
+} as const
+
+const { component, ...rest } = Astro.props
+
+const Component = allowedComponents[component.charAt(0).toUpperCase() + component.slice(1)]
+---
+{
+  Component ? (
+    <Component {...rest} />
+  ) : ''
+}
