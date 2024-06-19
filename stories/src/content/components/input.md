@@ -1,12 +1,15 @@
 ---
 name: Input
 props:
-  - name: theme
-    options: [light, dark]
+  variant:
+    options: [solid, outline]
+    value: solid
+  color:
+    options: [base, brand]
     value: base
-  - name: size
+  size:
     options: [sm, md, lg]
     value: md
-  - name: html
+  html:
     value: Input
 ---

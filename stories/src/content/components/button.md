@@ -1,15 +1,15 @@
 ---
 name: Button
 props:
-  - name: variant
+  variant:
     options: [solid, outline]
     value: solid
-  - name: color
+  color:
     options: [base, brand]
     value: base
-  - name: size
+  size:
     options: [sm, md, lg]
     value: md
-  - name: html
+  html:
     value: Button
 ---
