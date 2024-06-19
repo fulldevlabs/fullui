@@ -8,20 +8,14 @@ const { ...rest } = Astro.props
 ---
 
 <div class="story">
-  <div class="component">
-    <StoryComponent {...rest.props} />
-  </div>
+  <StoryComponent {...rest.props} />
 
-  <div class="details">
-    <StoryDetails name={rest.props.component} />
-  </div>
+  <StoryDetails name={rest.props.component} />
 
-  <div class="snippet">
-    <StorySnippet
-      name={rest.props.component}
-      props={rest.props}
-    />
-  </div>
+  <StorySnippet
+    name={rest.props.component}
+    props={rest.props}
+  />
 
   <div class="inputs">
     {

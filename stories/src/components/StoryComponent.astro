@@ -23,8 +23,10 @@ const { component, ...rest } = Astro.props
 const Component = FulldevUIComponents[component.charAt(0).toUpperCase() + component.slice(1)]
 ---
 
-{
-  Component ? (
-    <Component {...rest} />
-  ) : null
-}
+<div class="component">
+  {
+    Component ? (
+      <Component {...rest} />
+    ) : null
+  }
+</div>

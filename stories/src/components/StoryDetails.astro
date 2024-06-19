@@ -8,12 +8,14 @@ interface Props {
 const { name } = Astro.props
 ---
 
-<Heading>Props</Heading>
+<div class="details">
+  <Heading>Props</Heading>
 
-<Text>
-  Here are the available Props for the <b>{name}</b> component.
-</Text>
+  <Text>
+    Here are the available Props for the <b>{name}</b> component.
+  </Text>
 
-<Link a="">
-  <!-- Read the documentation <Icon name="external-link" /> -->
-</Link>
+  <Link a="">
+    <!-- Read the documentation <Icon name="external-link" /> -->
+  </Link>
+</div>
