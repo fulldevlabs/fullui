@@ -14,10 +14,7 @@ const componentData: any = await getEntry('components', dash(component))
         return (
           <div>
             <label>{key}</label>
-            <select
-              id={key}
-              onchange="updateUrl()"
-            >
+            <select name={key}>
               {componentData.data.props[key].options.map((option: string) => {
                 if (option === value) return <option selected>{option}</option>
                 return <option>{option}</option>
@@ -31,9 +28,8 @@ const componentData: any = await getEntry('components', dash(component))
         <div>
           <label>{key}</label>
           <input
-            id={key}
+            name={key}
             type="text"
-            onchange="updateUrl()"
             value={value}
           />
         </div>
@@ -43,7 +39,7 @@ const componentData: any = await getEntry('components', dash(component))
     return (
       <div>
         <input
-          id={key}
+          name={key}
           type="hidden"
           value={value}
         />

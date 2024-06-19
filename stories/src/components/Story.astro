@@ -17,7 +17,7 @@ const { ...rest } = Astro.props
     props={rest.props}
   />
 
-  <div class="inputs">
+  <div id="inputs">
     {
       Object.entries(rest).map(([key, value]) => {
         return (
@@ -33,21 +33,32 @@ const { ...rest } = Astro.props
 </div>
 
 <script is:inline>
-  function updateUrl() {
-    window.location.href =
-      '/?component=' +
-      document.getElementById('component').value +
-      '&html=' +
-      document.getElementById('html').value +
-      '&color=' +
-      document.getElementById('color').value +
-      '&size=' +
-      document.getElementById('size').value +
-      '&variant=' +
-      document.getElementById('variant').value +
-      '&theme=' +
-      document.getElementById('theme').value
-  }
+  document.addEventListener('change', function () {
+    var div = document.getElementById('inputs')
+    var inputs = div.getElementsByTagName('input')
+    var selects = div.getElementsByTagName('select')
+    var params = []
+
+    Array.prototype.forEach.call(inputs, function (input) {
+      if (input.name && input.value) {
+        params.push(
+          encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value)
+        )
+      }
+    })
+
+    Array.prototype.forEach.call(selects, function (select) {
+      if (select.name && select.value) {
+        params.push(
+          encodeURIComponent(select.name) +
+            '=' +
+            encodeURIComponent(select.value)
+        )
+      }
+    })
+
+    window.location.href = '/?' + params.join('&')
+  })
 </script>
 
 <style>
