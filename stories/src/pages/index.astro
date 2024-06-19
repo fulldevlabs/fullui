@@ -2,4 +2,14 @@
 import Story from '../components/Story.astro'
 ---
 
-<Story name="Button" />
+<Story
+  props={{
+    component: Astro.url.searchParams.get('component')
+      ? Astro.url.searchParams.get('component')
+      : '' /* cannot be undefined */,
+
+    html: Astro.url.searchParams.get('html')
+      ? Astro.url.searchParams.get('html')
+      : '' /* text editable param */,
+  }}
+/>

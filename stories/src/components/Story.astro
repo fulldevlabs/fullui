@@ -1,39 +1,35 @@
 ---
-import { Children } from 'fulldev-ui'
+import StoryComponent from './StoryComponent.astro'
 import StoryDetails from './StoryDetails.astro'
-import StoryInputs from './StoryInputs.astro'
+import StoryField from './StoryField.astro'
 
-interface Props {
-  name?: string
-}
+const { ...rest } = Astro.props
 
-const { name, ...rest } = Astro.props
+console.log(rest)
 ---
 
-{
-  name ? (
-    <div class="story">
-      <div class="content">
-        <Children {...rest} />
-      </div>
+<div class="story">
+  <div class="component">
+    <StoryComponent {...rest.props} />
+  </div>
 
-      <div class="details">
-        <StoryDetails name={name} />
-      </div>
+  <div class="details">
+    <StoryDetails name={rest.props.component} />
+  </div>
 
-      <div class="inputs">
-        {Object.entries(rest).map(([key, value]) => {
-          return (
-            <StoryInputs
-              {key}
-              {value}
-            />
-          )
-        })}
-      </div>
-    </div>
-  ) : null
-}
+  <div class="inputs">
+    {
+      Object.entries(rest).map(([key, value]) => {
+        return (
+          <StoryField
+            {key}
+            {value}
+          />
+        )
+      })
+    }
+  </div>
+</div>
 
 <script is:inline>
   function updateUrl() {

@@ -1,9 +1,17 @@
 ---
-import { Button, Badge } from 'fulldev-ui'
+import { Button, Badge, Icon, Heading, Image, Paragraph, Label, Link, Input, Textarea } from 'fulldev-ui'
 
-const allowedComponents: any = {
-  Button, 
-  Badge
+const FulldevUIComponents: any = { 
+  Badge,
+  Button,
+  Heading,
+  Icon,
+  Image,
+  Input,
+  Label,
+  Link,
+  Paragraph,
+  Textarea
 } as const
 
 interface Props {
@@ -12,7 +20,7 @@ interface Props {
 
 const { component, ...rest } = Astro.props
 
-const Component = allowedComponents[component.charAt(0).toUpperCase() + component.slice(1)]
+const Component = FulldevUIComponents[component.charAt(0).toUpperCase() + component.slice(1)]
 ---
 
 {
