@@ -2,4 +2,30 @@
 const { ...rest } = Astro.props
 ---
 
-{Object.entries(rest.value).map(([key, value]) => {})}
+{
+  Object.entries(rest.value).map(([key, value]: [string, any]) => {
+    if (key !== 'component' && value !== 'undefined') {
+      return (
+        <div>
+          <label>{key}</label>
+          <input
+            id={key}
+            type="text"
+            onchange="updateUrl()"
+            value={value}
+          />
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <input
+            id={key}
+            type="hidden"
+            value={value}
+          />
+        </div>
+      )
+    }
+  })
+}
