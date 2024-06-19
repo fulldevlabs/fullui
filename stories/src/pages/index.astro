@@ -11,5 +11,21 @@ import Story from '../components/Story.astro'
     html: Astro.url.searchParams.get('html')
       ? Astro.url.searchParams.get('html')
       : '' /* text editable param */,
+
+    color: Astro.url.searchParams.get('color')
+      ? Astro.url.searchParams.get('color')
+      : 'undefined' /* option editable param */,
+
+    size: Astro.url.searchParams.get('size')
+      ? Astro.url.searchParams.get('size')
+      : 'undefined' /* option editable param */,
+
+    variant: Astro.url.searchParams.get('variant')
+      ? Astro.url.searchParams.get('variant')
+      : 'undefined' /* option editable param */,
+
+    theme: Astro.url.searchParams.get('theme')
+      ? Astro.url.searchParams.get('theme')
+      : 'undefined' /* option editable param */,
   }}
 />
