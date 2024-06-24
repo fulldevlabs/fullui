@@ -1,0 +1,58 @@
+---
+import type { ComponentProps, HTMLTag, Polymorphic } from 'astro/types'
+import {
+  Box,
+  Button,
+  Group,
+  Heading,
+  Paragraph,
+  Section,
+  Tagline,
+} from 'fulldev-ui'
+
+type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> &
+  ComponentProps<typeof Section> & {
+    tagline?:
+      | ComponentProps<typeof Tagline>['html']
+      | ComponentProps<typeof Tagline>
+    heading?:
+      | ComponentProps<typeof Heading>['html']
+      | ComponentProps<typeof Heading>
+    paragraph?:
+      | ComponentProps<typeof Paragraph>['html']
+      | ComponentProps<typeof Paragraph>
+    buttons?: ComponentProps<typeof Button>[]
+    group?: ComponentProps<typeof Group>
+  }
+
+const { tagline, heading, paragraph, buttons, group, ...rest } = Astro.props
+---
+
+<Section
+  class:list={['cta']}
+  align="center"
+  size="3xl"
+  structure="column"
+  align="center"
+  {...rest}
+>
+  <Box structure="column">
+    <Tagline {...typeof tagline === 'string' ? { html: tagline } : tagline} />
+    <Heading {...typeof heading === 'string' ? { html: heading } : heading} />
+    <Paragraph
+      {...typeof paragraph === 'string' ? { html: paragraph } : paragraph}
+    />
+  </Box>
+  <Group {...group}>
+    {buttons?.map((button: any) => <Button {...button} />)}
+  </Group>
+</Section>
+
+<style>
+  .cta-section {
+    background-image: url('/landing-background.png') !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+</style>
