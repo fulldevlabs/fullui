@@ -28,9 +28,13 @@ import Layout from '../layouts/Layout.astro'
             ? Astro.url.searchParams.get('variant')
             : 'undefined' /* option editable param */,
 
-          theme: Astro.url.searchParams.get('theme')
-            ? Astro.url.searchParams.get('theme')
-            : 'undefined' /* option editable param */,
+          name: Astro.url.searchParams.get('name')
+            ? Astro.url.searchParams.get('name')
+            : '' /* text editable param */,
+
+          src: Astro.url.searchParams.get('src')
+            ? Astro.url.searchParams.get('src')
+            : '' /* text editable param */,
         }}
       />
     ) : null

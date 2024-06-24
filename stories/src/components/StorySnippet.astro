@@ -14,7 +14,8 @@ const { name, props } = Astro.props
       {
         Object.entries(props).map(([key, value]) => {
           if (key !== 'component') {
-            if (value !== 'undefined') return key + '="' + value + '" '
+            if (value !== 'undefined' && value !== '')
+              return key + '="' + value + '" '
           }
         })
       }

@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
 import { Head } from 'fulldev-ui'
 import Sidebar from '../components/Sidebar.astro'
 ---
@@ -9,13 +8,16 @@ import Sidebar from '../components/Sidebar.astro'
   <Head
     title="Fulldev UI Stories"
     description="Here you can try out some of our base and typography components."
-  >
-    <ViewTransitions />
-  </Head>
+  />
   <body>
     <main>
       <Sidebar />
       <slot />
     </main>
+    <style is:global>
+      main {
+        display: flex;
+      }
+    </style>
   </body>
 </html>
