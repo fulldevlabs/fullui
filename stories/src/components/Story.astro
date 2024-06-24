@@ -7,60 +7,56 @@ import StorySnippet from './StorySnippet.astro'
 const { ...rest } = Astro.props
 ---
 
-{ 
-  rest.props.component ? (
-    <div class="story">
-      <StoryComponent {...rest.props} />
+<div class="story">
+  <StoryComponent {...rest.props} />
 
-      <StoryDetails name={rest.props.component} />
+  <StoryDetails name={rest.props.component} />
 
-      <StorySnippet
-        name={rest.props.component}
-        props={rest.props}
-      />
+  <StorySnippet
+    name={rest.props.component}
+    props={rest.props}
+  />
 
-      <div id="inputs">
-        {
-          Object.entries(rest).map(([key, value]) => {
-            return (
-              <StoryField
-                component={rest.props.component}
-                {key}
-                {value}
-              />
-            )
-          })
-        }
-      </div>
-    </div>
-
-    <script is:inline>
-      document.addEventListener('change', function () {
-        var div = document.getElementById('inputs')
-        var inputs = div.getElementsByTagName('input')
-        var selects = div.getElementsByTagName('select')
-        var params = []
-
-        Array.prototype.forEach.call(inputs, function (input) {
-          if (input.name && input.value) {
-            params.push(
-              encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value)
-            )
-          }
-        })
-
-        Array.prototype.forEach.call(selects, function (select) {
-          if (select.name && select.value) {
-            params.push(
-              encodeURIComponent(select.name) +
-                '=' +
-                encodeURIComponent(select.value)
-            )
-          }
-        })
-
-        window.location.href = '/?' + params.join('&')
+  <div id="inputs">
+    {
+      Object.entries(rest).map(([key, value]) => {
+        return (
+          <StoryField
+            component={rest.props.component}
+            {key}
+            {value}
+          />
+        )
       })
-    </script>
- ) : null
-}
+    }
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('change', function () {
+    var div = document.getElementById('inputs')
+    var inputs = div.getElementsByTagName('input')
+    var selects = div.getElementsByTagName('select')
+    var params = []
+
+    Array.prototype.forEach.call(inputs, function (input) {
+      if (input.name && input.value) {
+        params.push(
+          encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value)
+        )
+      }
+    })
+
+    Array.prototype.forEach.call(selects, function (select) {
+      if (select.name && select.value) {
+        params.push(
+          encodeURIComponent(select.name) +
+            '=' +
+            encodeURIComponent(select.value)
+        )
+      }
+    })
+
+    window.location.href = '/?' + params.join('&')
+  })
+</script>
