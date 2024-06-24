@@ -7,97 +7,60 @@ import StorySnippet from './StorySnippet.astro'
 const { ...rest } = Astro.props
 ---
 
-<div class="story">
-  <StoryComponent {...rest.props} />
+{ 
+  rest.props.component ? (
+    <div class="story">
+      <StoryComponent {...rest.props} />
 
-  <StoryDetails name={rest.props.component} />
+      <StoryDetails name={rest.props.component} />
 
-  <StorySnippet
-    name={rest.props.component}
-    props={rest.props}
-  />
+      <StorySnippet
+        name={rest.props.component}
+        props={rest.props}
+      />
 
-  <div id="inputs">
-    {
-      Object.entries(rest).map(([key, value]) => {
-        return (
-          <StoryField
-            component={rest.props.component}
-            {key}
-            {value}
-          />
-        )
+      <div id="inputs">
+        {
+          Object.entries(rest).map(([key, value]) => {
+            return (
+              <StoryField
+                component={rest.props.component}
+                {key}
+                {value}
+              />
+            )
+          })
+        }
+      </div>
+    </div>
+
+    <script is:inline>
+      document.addEventListener('change', function () {
+        var div = document.getElementById('inputs')
+        var inputs = div.getElementsByTagName('input')
+        var selects = div.getElementsByTagName('select')
+        var params = []
+
+        Array.prototype.forEach.call(inputs, function (input) {
+          if (input.name && input.value) {
+            params.push(
+              encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value)
+            )
+          }
+        })
+
+        Array.prototype.forEach.call(selects, function (select) {
+          if (select.name && select.value) {
+            params.push(
+              encodeURIComponent(select.name) +
+                '=' +
+                encodeURIComponent(select.value)
+            )
+          }
+        })
+
+        window.location.href = '/?' + params.join('&')
       })
-    }
-  </div>
-</div>
-
-<script is:inline>
-  document.addEventListener('change', function () {
-    var div = document.getElementById('inputs')
-    var inputs = div.getElementsByTagName('input')
-    var selects = div.getElementsByTagName('select')
-    var params = []
-
-    Array.prototype.forEach.call(inputs, function (input) {
-      if (input.name && input.value) {
-        params.push(
-          encodeURIComponent(input.name) + '=' + encodeURIComponent(input.value)
-        )
-      }
-    })
-
-    Array.prototype.forEach.call(selects, function (select) {
-      if (select.name && select.value) {
-        params.push(
-          encodeURIComponent(select.name) +
-            '=' +
-            encodeURIComponent(select.value)
-        )
-      }
-    })
-
-    window.location.href = '/?' + params.join('&')
-  })
-</script>
-
-<style>
-  .story {
-    width: 100%;
-    max-height: 96vh;
-    overflow: auto;
-  }
-
-  .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px 10px 0 10px;
-    border: 2px solid var(--6);
-    border-radius: var(--radius-2);
-    background-image: radial-gradient(
-      circle,
-      var(--8) 1px,
-      rgba(0, 0, 0, 0) 1px
-    );
-    background-size: 40px 40px;
-    background-color: var(--2);
-    padding: 20px;
-    height: 395px;
-    overflow: auto;
-    resize: both;
-
-    img {
-      max-width: 250px;
-      max-height: 350px;
-    }
-  }
-
-  .details {
-    padding: 20px;
-
-    b {
-      text-transform: capitalize;
-    }
-  }
-</style>
+    </script>
+ ) : null
+}

@@ -17,12 +17,9 @@ const componentEntries = await getCollection('components')
     })
 
     return (
-      <>
-        <Button href={'/?component=' + component.data.name + propLink}>
-          {component.data.name}
-        </Button>
-        <br />
-      </>
+      <Button href={'/?component=' + component.data.name + propLink}>
+        {component.data.name}
+      </Button>
     )
   })
 }
