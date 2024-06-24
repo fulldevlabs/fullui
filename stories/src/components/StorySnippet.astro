@@ -8,8 +8,8 @@ const { name, props } = Astro.props
 ---
 
 <div class="snippet">
-  <div class="code">
-    <p>
+  <div class="input full variant-outline size-md color-base">
+    <p class="code">
       {'<' + name + ' '}
       {
         Object.entries(props).map(([key, value]) => {
@@ -23,3 +23,16 @@ const { name, props } = Astro.props
     </p>
   </div>
 </div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+  .snippet {
+    padding: 20px 0;
+  }
+
+  p {
+    --font-family: 'JetBrains Mono' !important;
+    font-family: var(--font-family) !important;
+  }
+</style>

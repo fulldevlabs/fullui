@@ -3,13 +3,13 @@ name: Input
 props:
   variant:
     options: [solid, outline]
-    value: solid
+    value: outline
   color:
     options: [base, brand]
     value: base
   size:
     options: [sm, md, lg]
-    value: md
-  html:
+    value: lg
+  value:
     value: Input
 ---

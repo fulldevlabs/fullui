@@ -1,25 +1,76 @@
 ---
 import { getCollection } from 'astro:content'
-import { Button } from 'fulldev-ui'
+import { Button, Group, Heading, Icon, Link, Paragraph } from 'fulldev-ui'
 
 const componentEntries = await getCollection('components')
 ---
 
-{
-  componentEntries.map((component) => {
-    let propLink: string = ''
-    let props: any = component.data.props
+<div class="sidebar">
+  <Heading><b>Fulldev UI Stories</b></Heading>
+  <Paragraph>Try out some of our Base and Typography components.</Paragraph>
 
-    Object.entries(props).map(([key, value]: [string, any]) => {
-      propLink += '&' + key + '=' + value.value
+  <Group>
+    <Button
+      size="md"
+      variant="outline"
+      ><Icon name="book" />Documentation</Button
+    >
+    <Button
+      size="md"
+      variant="outline"
+      ><Icon name="brand-github" /></Button
+    >
+  </Group>
 
-      return propLink
+  <Heading size="sm"><b>Components</b></Heading>
+
+  {
+    componentEntries.map((component) => {
+      let propLink: string = ''
+      let props: any = component.data.props
+
+      Object.entries(props).map(([key, value]: [string, any]) => {
+        propLink += '&' + key + '=' + value.value
+
+        return propLink
+      })
+
+      return (
+        <Link
+          color={
+            component.data.name == Astro.url.searchParams.get('component')
+              ? 'brand'
+              : 'base'
+          }
+          href={'/?component=' + component.data.name + propLink}
+        >
+          {component.data.name}
+          <Icon
+            size="sm"
+            name={
+              component.data.name == Astro.url.searchParams.get('component')
+                ? 'corner-down-left'
+                : ''
+            }
+          />
+        </Link>
+      )
     })
+  }
+</div>
 
-    return (
-      <Button href={'/?component=' + component.data.name + propLink}>
-        {component.data.name}
-      </Button>
-    )
-  })
-}
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    padding-right: 40px;
+
+    .link {
+      padding: 10px 0 0 0;
+    }
+
+    .group {
+      padding: 20px 0;
+    }
+  }
+</style>

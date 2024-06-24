@@ -1,5 +1,6 @@
 ---
 import { FulldevUIComponents } from '../schemas/components.ts'
+import { Card } from 'fulldev-ui'
 
 interface Props {
   component: string
@@ -10,10 +11,29 @@ const { component, ...rest } = Astro.props
 const Component = FulldevUIComponents[component.charAt(0).toUpperCase() + component.slice(1)]
 ---
 
-<div class="component">
+<Card frame="panel" structure="row">
   {
     Component ? (
       <Component {...rest} />
     ) : null
   }
-</div>
+</Card>
+
+<style>
+  .card {
+    display: flex;
+    height: 250px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* background-size: 87.25px 82px;
+    background-image:
+      linear-gradient(to right, var(--border-outline) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border-outline) 1px, transparent 1px); */
+
+    img {
+      width: 20%;
+    }
+  }
+</style>

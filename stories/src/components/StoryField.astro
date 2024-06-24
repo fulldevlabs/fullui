@@ -16,8 +16,11 @@ const componentData: any = await getEntry('components', dash(component))
       ) {
         return (
           <div>
-            <label>{key}</label>
-            <select name={key}>
+            <label>{key}?:</label>
+            <select
+              class="input full variant-outline size-md color-base"
+              name={key}
+            >
               {componentData.data.props[key].options.map((option: string) => {
                 if (option === value) return <option selected>{option}</option>
                 return <option>{option}</option>
@@ -30,8 +33,9 @@ const componentData: any = await getEntry('components', dash(component))
       if (value !== '') {
         return (
           <div>
-            <label>{key}</label>
+            <label>{key}?:</label>
             <input
+              class="input full variant-outline size-md color-base"
               name={key}
               type="text"
               value={value}
@@ -42,13 +46,30 @@ const componentData: any = await getEntry('components', dash(component))
     }
 
     return (
-      <div>
-        <input
-          name={key}
-          type="hidden"
-          value={value}
-        />
-      </div>
+      <input
+        name={key}
+        type="hidden"
+        value={value}
+      />
     )
   })
 }
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+  :root {
+    --font-family: 'JetBrains Mono' !important;
+  }
+
+  div {
+    padding-bottom: 10px;
+  }
+
+  input,
+  select,
+  label {
+    --font-family: 'JetBrains Mono' !important;
+    font-family: var(--font-family) !important;
+  }
+</style>

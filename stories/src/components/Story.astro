@@ -60,3 +60,15 @@ const { ...rest } = Astro.props
     window.location.href = '/?' + params.join('&')
   })
 </script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+  .story {
+    width: 100%;
+  }
+
+  p {
+    --font-family: 'JetBrains Mono' !important;
+  }
+</style>

@@ -1,42 +1,68 @@
 ---
+import { Layout } from 'fulldev-ui'
+import 'fulldev-ui/radix'
+import Sidebar from '../components/Sidebar.astro'
 import Story from '../components/Story.astro'
-import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout>
-  {
-    Astro.url.searchParams.get('component') ? (
-      <Story
-        props={{
-          component: Astro.url.searchParams.get('component')
-            ? Astro.url.searchParams.get('component')
-            : '' /* cannot be undefined */,
+<Layout
+  title="Fulldev UI - Astro UI component library, open-source"
+  description="A library of UI components, written in Astro, compatible with all frameworks. Unique features to build entire websites, check it out."
+  body={{
+    class: 'not-content',
+    theme: 'dark',
+  }}
+>
+  <div>
+    <Sidebar />
+    {
+      Astro.url.searchParams.get('component') ? (
+        <Story
+          props={{
+            component: Astro.url.searchParams.get('component')
+              ? Astro.url.searchParams.get('component')
+              : '' /* cannot be undefined */,
 
-          html: Astro.url.searchParams.get('html')
-            ? Astro.url.searchParams.get('html')
-            : '' /* text editable param */,
+            html: Astro.url.searchParams.get('html')
+              ? Astro.url.searchParams.get('html')
+              : '' /* text editable param */,
 
-          color: Astro.url.searchParams.get('color')
-            ? Astro.url.searchParams.get('color')
-            : 'undefined' /* option editable param */,
+            color: Astro.url.searchParams.get('color')
+              ? Astro.url.searchParams.get('color')
+              : 'undefined' /* option editable param */,
 
-          size: Astro.url.searchParams.get('size')
-            ? Astro.url.searchParams.get('size')
-            : 'undefined' /* option editable param */,
+            size: Astro.url.searchParams.get('size')
+              ? Astro.url.searchParams.get('size')
+              : 'undefined' /* option editable param */,
 
-          variant: Astro.url.searchParams.get('variant')
-            ? Astro.url.searchParams.get('variant')
-            : 'undefined' /* option editable param */,
+            variant: Astro.url.searchParams.get('variant')
+              ? Astro.url.searchParams.get('variant')
+              : 'undefined' /* option editable param */,
 
-          name: Astro.url.searchParams.get('name')
-            ? Astro.url.searchParams.get('name')
-            : '' /* text editable param */,
+            name: Astro.url.searchParams.get('name')
+              ? Astro.url.searchParams.get('name')
+              : '' /* text editable param */,
 
-          src: Astro.url.searchParams.get('src')
-            ? Astro.url.searchParams.get('src')
-            : '' /* text editable param */,
-        }}
-      />
-    ) : null
-  }
+            src: Astro.url.searchParams.get('src')
+              ? Astro.url.searchParams.get('src')
+              : '' /* text editable param */,
+
+            value: Astro.url.searchParams.get('value')
+              ? Astro.url.searchParams.get('value')
+              : '' /* text editable param */,
+          }}
+        />
+      ) : null
+    }
+  </div>
 </Layout>
+
+<style>
+  * {
+    padding: 10px;
+  }
+
+  div {
+    display: flex;
+  }
+</style>

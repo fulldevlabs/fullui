@@ -3,13 +3,13 @@ name: Textarea
 props:
   variant:
     options: [solid, outline]
-    value: solid
+    value: outline
   color:
     options: [base, brand]
     value: base
   size:
     options: [sm, md, lg]
-    value: md
+    value: lg
   html:
     value: Textarea
 ---

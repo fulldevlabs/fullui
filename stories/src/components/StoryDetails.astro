@@ -9,13 +9,16 @@ const { name } = Astro.props
 ---
 
 <div class="details">
-  <Heading>Props</Heading>
+  <Heading><b>Props</b></Heading>
 
   <Text>
     Here are the available Props for the <b>{name}</b> component.
   </Text>
 
-  <Link a="">
-    <!-- Read the documentation <Icon name="external-link" /> -->
+  <Link
+    color="brand"
+    a=""
+  >
+    Read the documentation <Icon name="external-link" />
   </Link>
 </div>
