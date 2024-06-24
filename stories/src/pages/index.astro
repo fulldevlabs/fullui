@@ -1,8 +1,16 @@
 ---
+import { getEntry } from 'astro:content'
 import { Layout } from 'fulldev-ui'
 import 'fulldev-ui/radix'
 import Sidebar from '../components/Sidebar.astro'
 import Story from '../components/Story.astro'
+
+console.log(Astro.url)
+
+const component = await getEntry(
+  'components',
+  Astro.url.searchParams.get('component')
+)
 ---
 
 <Layout
@@ -16,8 +24,9 @@ import Story from '../components/Story.astro'
   <div>
     <Sidebar />
     {
-      Astro.url.searchParams.get('component') ? (
+      Astro.url.searchParams.get('component') && (
         <Story
+          {...Astro.url.searchParams}
           props={{
             component: Astro.url.searchParams.get('component')
               ? Astro.url.searchParams.get('component')
@@ -27,9 +36,7 @@ import Story from '../components/Story.astro'
               ? Astro.url.searchParams.get('html')
               : '' /* text editable param */,
 
-            color: Astro.url.searchParams.get('color')
-              ? Astro.url.searchParams.get('color')
-              : 'undefined' /* option editable param */,
+            color: Astro.url.searchParams.get('color'),
 
             size: Astro.url.searchParams.get('size')
               ? Astro.url.searchParams.get('size')
@@ -52,7 +59,7 @@ import Story from '../components/Story.astro'
               : '' /* text editable param */,
           }}
         />
-      ) : null
+      )
     }
   </div>
 </Layout>

@@ -9,6 +9,10 @@ const componentData: any = await getEntry('components', dash(component))
 
 {
   Object.entries(rest.value).map(([key, value]: [string, any]) => {
+    if (key === 'component') return
+    if (value === undefined) return
+    if (value === 'undefined') return
+
     if (key !== 'component' && value !== 'undefined') {
       if (
         componentData.data.props[key] &&
