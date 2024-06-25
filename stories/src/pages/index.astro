@@ -17,10 +17,12 @@ const badge = await getEntry('components', 'badge')
     theme: 'dark',
   }}
 >
-  <InlineStory
-    component={badge.slug}
-    {...badge.data}
-  />
+  <div style={{ maxWidth: '900px' }}>
+    <InlineStory
+      component={badge.slug}
+      {...badge.data}
+    />
+  </div>
 
   <div>
     <Sidebar />
