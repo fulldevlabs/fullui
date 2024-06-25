@@ -62,32 +62,49 @@ import { ` +
 
   <div class="story-inputs compact">
     {
-      props.map(({ name, value, options }) =>
-        options ? (
-          <>
-            <Label>
-              <b>{name}?:</b>
-            </Label>
-            <Select
-              class="story-input"
-              {value}
-              {name}
-              {options}
-            />
-          </>
-        ) : (
-          <>
-            <Label>
-              <b>{name}?:</b>
-            </Label>
-            <Input
-              class="story-input"
-              {value}
-              {name}
-            />
-          </>
-        )
-      )
+      props.map(({ name, value, options }) => {
+        if (typeof value === 'boolean') {
+          return (
+            <>
+              <Label>
+                <b>{name}?:</b>
+              </Label>
+              <input
+                type="checkbox"
+                name=""
+                value={value}
+              />
+            </>
+          )
+        } else if (options) {
+          return (
+            <>
+              <Label>
+                <b>{name}?:</b>
+              </Label>
+              <Select
+                class="story-input"
+                {value}
+                {name}
+                {options}
+              />
+            </>
+          )
+        } else {
+          return (
+            <>
+              <Label>
+                <b>{name}?:</b>
+              </Label>
+              <Input
+                class="story-input"
+                {value}
+                {name}
+              />
+            </>
+          )
+        }
+      })
     }
   </div>
 
