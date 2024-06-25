@@ -37,7 +37,7 @@ props.forEach(({ name, value }) => {
   <div class="story-preview">
     {Component && <Component {...propsObject} />}
   </div>
-  <div class="story-inputs">
+  <div class="story-inputs compact">
     {
       props.map(({ name, value, options }) =>
         options ? (
@@ -91,7 +91,7 @@ props.forEach(({ name, value }) => {
     .story-inputs {
       display: flex;
       flex-direction: column;
-      gap: var(--space-3);
+      gap: var(--space-2);
       border: 1px solid var(--border);
       background-color: var(--background-subtle);
       padding: var(--space-3);
