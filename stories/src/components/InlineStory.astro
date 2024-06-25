@@ -169,6 +169,17 @@ import { ` +
         background-color: var(--background-subtle) !important;
         font-size: var(--text-label);
       }
+
+      a {
+        opacity: 0;
+        transition: all 0.25s ease-out;
+      }
+    }
+
+    .story-snippet:hover {
+      a {
+        opacity: 100;
+      }
     }
   }
 </style>
