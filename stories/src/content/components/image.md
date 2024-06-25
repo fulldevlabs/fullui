@@ -1,6 +1,6 @@
 ---
 name: Image
 props:
-  src:
+  - key: src
     value: https://picsum.photos/999
 ---

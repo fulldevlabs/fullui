@@ -1,12 +1,12 @@
 ---
 name: Icon
 props:
-  color:
+  - key: color
     options: [base, brand]
     value: base
-  size:
+  - key: size
     options: [sm, md, lg]
     value: lg
-  name:
+  - key: nmae
     value: circle
 ---
