@@ -38,25 +38,6 @@ props.forEach(({ name, value }) => {
     {Component && <Component {...propsObject} />}
   </div>
 
-  <div class="story-snippet">
-    <p>---</p>
-    <p>
-      import {
-        '{ ' + component.charAt(0).toUpperCase() + component.slice(1) + ' }'
-      } from 'fulldev-ui'
-    </p>
-    <p>---</p>
-    <p>
-      {'<' + component.charAt(0).toUpperCase() + component.slice(1) + ' '}
-      {
-        props.map(({ name, value }) => {
-          return name + '="' + value + '" '
-        })
-      }
-      {'/>'}
-    </p>
-  </div>
-
   <div class="story-inputs compact">
     {
       props.map(({ name, value, options }) =>
@@ -76,6 +57,25 @@ props.forEach(({ name, value }) => {
         )
       )
     }
+  </div>
+
+  <div class="story-snippet">
+    <p>---</p>
+    <p>
+      import {
+        '{ ' + component.charAt(0).toUpperCase() + component.slice(1) + ' }'
+      } from 'fulldev-ui'
+    </p>
+    <p>---</p>
+    <p>
+      {'<' + component.charAt(0).toUpperCase() + component.slice(1) + ' '}
+      {
+        props.map(({ name, value }) => {
+          return name + '="' + value + '" '
+        })
+      }
+      {'/>'}
+    </p>
   </div>
 </div>
 
@@ -110,8 +110,6 @@ props.forEach(({ name, value }) => {
 
     .story-snippet {
       border: 1px solid var(--border);
-      border-bottom: 0;
-      background-color: var(--background-subtle);
       padding: 1rem;
       width: 100%;
 
@@ -126,7 +124,9 @@ props.forEach(({ name, value }) => {
       display: flex;
       flex-direction: column;
       gap: var(--space-2);
+      border-bottom: 0;
       border: 1px solid var(--border);
+      background-color: var(--background-subtle);
       padding: var(--space-3);
       width: 100%;
     }
