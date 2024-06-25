@@ -1,4 +1,5 @@
 ---
+import { Code } from 'astro:components'
 import { Input, Select } from 'fulldev-ui'
 import { pascal } from 'radash'
 
@@ -59,25 +60,33 @@ props.forEach(({ name, value }) => {
     }
   </div>
 
-  <div class="story-snippet">
-    <p>---</p>
-    <p>
-      import {
-        '{ ' + component.charAt(0).toUpperCase() + component.slice(1) + ' }'
-      } from 'fulldev-ui'
-    </p>
-    <p>---</p>
-    <p>
-      {'<' + component.charAt(0).toUpperCase() + component.slice(1) + ' '}
-      {
-        props.map(({ name, value }) => {
-          return name + '="' + value + '" '
-        })
-      }
-      {'/>'}
-    </p>
-  </div>
+  <Code
+    lang={'astro'}
+    code={`---
+import { Button } from 'fulldev-ui'
+---
+
+<Button></Button>`}
+  />
 </div>
+
+<!-- />
+<p>---</p>
+<p>
+  import {
+    '{ ' + component.charAt(0).toUpperCase() + component.slice(1) + ' }'
+  } from 'fulldev-ui'
+</p>
+<p>---</p>
+<p>
+  {'<' + component.charAt(0).toUpperCase() + component.slice(1) + ' '}
+  {
+    props.map(({ name, value }) => {
+      return name + '="' + value + '" '
+    })
+  }
+  {'/>'}
+</p> -->
 
 <script is:inline>
   const inputs = document.querySelectorAll('.story-input')
@@ -96,31 +105,20 @@ props.forEach(({ name, value }) => {
   * {
     box-sizing: border-box;
   }
+
   .story {
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--border);
     width: 100%;
 
     .story-preview {
       display: flex;
       justify-content: center;
       align-items: center;
-      border: 1px solid var(--border);
       border-bottom: 0;
       padding: 1rem;
       width: 100%;
-    }
-
-    .story-snippet {
-      border: 1px solid var(--border);
-      padding: 1rem;
-      width: 100%;
-
-      p {
-        --font-family: 'Consolas';
-        font-size: var(--text-body-sm);
-        font-family: var(--font-family) !important;
-      }
     }
 
     .story-inputs {
@@ -128,10 +126,18 @@ props.forEach(({ name, value }) => {
       flex-direction: column;
       gap: var(--space-2);
       border-bottom: 0;
-      border: 1px solid var(--border);
+      border: solid var(--border);
+      border-width: 1px 0px;
       background-color: var(--background-subtle);
       padding: var(--space-3);
       width: 100%;
+    }
+
+    .astro-code {
+      margin: 0;
+      background-color: var(--background-subtle) !important;
+      padding: var(--space-3);
+      font-size: var(--text-label);
     }
   }
 </style>
