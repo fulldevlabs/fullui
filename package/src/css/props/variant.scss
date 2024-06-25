@@ -1,5 +1,5 @@
-.variant-solid {
-  background-color: var(--solid);
+.full.variant-solid {
+  background-color: var(--solid) !important;
   color: var(--solid-contrast);
 
   .full {
@@ -68,6 +68,7 @@
   // box-shadow: inset 0 0 0 1px var(--border-outline);
   border: 1px solid var(--border-outline);
   color: var(--foreground);
+  background-color: transparent;
 
   &:is(a, button),
   &[href] {
@@ -91,6 +92,7 @@
 
 .variant-ghost {
   box-shadow: none;
+  background-color: transparent;
 
   &:is(a, button),
   &[href] {

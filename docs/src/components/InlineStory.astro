@@ -22,11 +22,11 @@ const Component = components.find((astroComponent) => {
   return componentName === pascal(component)
 })?.default
 
-Astro.url.searchParams.forEach((value, key) => {
-  const propIndex = props.findIndex((prop) => prop.name === key)
-  if (propIndex === -1) return
-  props[propIndex].value = value
-})
+// Astro.url.searchParams.forEach((value, key) => {
+//   const propIndex = props.findIndex((prop) => prop.name === key)
+//   if (propIndex === -1) return
+//   props[propIndex].value = value
+// })
 
 const propsObject: any = {}
 props.forEach(({ name, value }) => {
@@ -58,7 +58,14 @@ import { ` +
 
 <div class="story not-content">
   <div class="story-preview">
-    {Component && <Component {...propsObject} />}
+    {
+      Component && (
+        <Component
+          class:list={['story-component']}
+          {...propsObject}
+        />
+      )
+    }
   </div>
 
   <div class="story-inputs compact">
@@ -125,13 +132,22 @@ import { ` +
 
 <script define:vars={{ codeSnippet }} is:inline>
   const inputs = document.querySelectorAll('.story-input')
+  const component = document.querySelector('.story-component')
 
   inputs.forEach((input) => {
-    input.addEventListener('change', (event) => {
+    input.addEventListener('input', (event) => {
       const { name, value } = event.target
-      const url = new URL(window.location.href)
-      url.searchParams.set(name, value)
-      window.location.href = url
+      if (name === 'text') component.textContent = value
+      else if (name === 'html') component.innerHTML = value
+      else if (name === 'compact') component.classList.toggle('compact')
+      else if (name === 'contrast') component.classList.toggle('contrast')
+      else {
+        const currentClass = component.className
+          .split(' ')
+          .find((c) => c.startsWith(name))
+        component.classList.remove(currentClass)
+        component.classList.add(name + '-' + value)
+      }
     })
   })
 

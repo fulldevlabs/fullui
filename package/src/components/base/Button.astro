@@ -69,10 +69,6 @@ const {
       outline-offset: 2px;
     }
 
-    &.variant-solid {
-      color: var(--background);
-    }
-
     &:disabled {
       opacity: 0.5;
       cursor: not-allowed;
@@ -81,6 +77,7 @@ const {
 
     &.variant-link {
       box-shadow: none;
+      background-color: transparent;
       padding: 0;
 
       &:hover {
