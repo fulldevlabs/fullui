@@ -1,5 +1,6 @@
 ---
 import { Input, Select } from 'fulldev-ui'
+import { pascal } from 'radash'
 
 interface Props {
   component: string
@@ -10,20 +11,21 @@ interface Props {
   }[]
 }
 
-const components = await Astro.glob('../**/*.astro')
+const components = await Astro.glob('../../node_modules/fulldev-ui/**/*.astro')
 
 const { component, props } = Astro.props
 
 const Component = components.find((astroComponent) => {
   const fileName = astroComponent.default.moduleId?.split('/').pop()
   const componentName = fileName?.split('.')[0]
-  return componentName === component
+  const passedComponentName = pascal(component)
+  return componentName === pascal(component)
 })?.default
 ---
 
 <div class="story">
   <div class="story-preview">
-    {Component && <Component component={component} />}
+    {Component && <Component html="test" />}
   </div>
   <div class="story-inputs">
     {
