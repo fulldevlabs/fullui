@@ -4,7 +4,7 @@ import { Input, Select } from 'fulldev-ui'
 interface Props {
   component: string
   props: {
-    key: string
+    name: string
     options?: any[]
     value?: any
   }[]
@@ -12,7 +12,7 @@ interface Props {
 
 const components = await Astro.glob('../**/*.astro')
 
-const { component, props, ...rest } = Astro.props
+const { component, props } = Astro.props
 
 const Component = components.find((astroComponent) => {
   const fileName = astroComponent.default.moduleId?.split('/').pop()
@@ -27,23 +27,23 @@ const Component = components.find((astroComponent) => {
   </div>
   <div class="story-inputs">
     {
-      props.map(({ key, value, options }) =>
+      props.map(({ name, value, options }) =>
         options ? (
           <Select
             class="story-input"
-            name={key}
-            value={value}
-            options={options}
+            {name}
+            {value}
+            {options}
           />
         ) : (
           <Input
             class="story-input"
-            name={key}
+            {name}
             {value}
           />
         )
       )
-    })
+    }
   </div>
 </div>
 
@@ -62,7 +62,28 @@ const Component = components.find((astroComponent) => {
 
 <style>
   .story {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+
+    .story-preview {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid red;
+      padding: 1rem;
+      width: 100%;
+    }
+
+    .story-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      border: 1px solid var(--border);
+      background-color: var(--background-subtle);
+      padding: var(--space-3);
+      width: 100%;
+    }
   }
 
   p {

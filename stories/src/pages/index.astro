@@ -1,10 +1,13 @@
 ---
+import { getEntry } from 'astro:content'
 import { Layout } from 'fulldev-ui'
 import 'fulldev-ui/radix'
+import InlineStory from '../components/InlineStory.astro'
 import Sidebar from '../components/Sidebar.astro'
 import Story from '../components/Story.astro'
 
 console.log(Astro.url)
+const badge = await getEntry('components', 'badge')
 ---
 
 <Layout
@@ -15,6 +18,11 @@ console.log(Astro.url)
     theme: 'dark',
   }}
 >
+  <InlineStory
+    component={badge.slug}
+    {...badge.data}
+  />
+
   <div>
     <Sidebar />
     {

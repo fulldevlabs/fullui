@@ -1,12 +1,12 @@
 ---
-name: Textarea
+title: Textarea
 props:
-  - key: color
+  - name: color
     options: [base, brand]
     value: base
-  - key: size
+  - name: size
     options: [sm, md, lg]
     value: lg
-  - key: html
+  - name: html
     value: Textarea
 ---
