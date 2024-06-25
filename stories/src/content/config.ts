@@ -3,8 +3,12 @@ import { defineCollection, z } from 'astro:content'
 const componentsCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    name: z.string().nullish(),
-    props: z.any(),
+    title: z.string(),
+    props: z.object({
+      key: z.string(),
+      options: z.array(z.any()).optional(),
+      value: z.string().optional(),
+    }),
   }),
 })
 
