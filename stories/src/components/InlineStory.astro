@@ -32,6 +32,12 @@ const propsObject: any = {}
 props.forEach(({ name, value }) => {
   propsObject[name] = value
 })
+
+let propsString: string = ''
+
+props.map(({ name, value }) => {
+  propsString += name + '="' + value + '" '
+})
 ---
 
 <div class="story">
@@ -62,11 +68,19 @@ props.forEach(({ name, value }) => {
 
   <Code
     lang={'astro'}
-    code={`---
-import { Button } from 'fulldev-ui'
+    code={`--- 
+import { ` +
+      component.charAt(0).toUpperCase() +
+      component.slice(1) +
+      ` } from 'fulldev-ui'
 ---
 
-<Button></Button>`}
+<` +
+      component.charAt(0).toUpperCase() +
+      component.slice(1) +
+      ` ` +
+      propsString +
+      `/>`}
   />
 </div>
 
