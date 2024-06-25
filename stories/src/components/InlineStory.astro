@@ -37,6 +37,26 @@ props.forEach(({ name, value }) => {
   <div class="story-preview">
     {Component && <Component {...propsObject} />}
   </div>
+
+  <div class="story-snippet">
+    <p>---</p>
+    <p>
+      import {
+        '{ ' + component.charAt(0).toUpperCase() + component.slice(1) + ' }'
+      } from 'fulldev-ui'
+    </p>
+    <p>---</p>
+    <p>
+      {'<' + component.charAt(0).toUpperCase() + component.slice(1) + ' '}
+      {
+        props.map(({ name, value }) => {
+          return name + '="' + value + '" '
+        })
+      }
+      {'/>'}
+    </p>
+  </div>
+
   <div class="story-inputs">
     {
       props.map(({ name, value, options }) =>
@@ -88,18 +108,27 @@ props.forEach(({ name, value }) => {
       width: 100%;
     }
 
+    .story-snippet {
+      border: 1px solid var(--border);
+      border-bottom: 0;
+      background-color: var(--background-subtle);
+      padding: 1rem;
+      width: 100%;
+
+      p {
+        --font-family: 'Consolas';
+        font-size: var(--text-body-sm);
+        font-family: var(--font-family) !important;
+      }
+    }
+
     .story-inputs {
       display: flex;
       flex-direction: column;
       gap: var(--space-3);
       border: 1px solid var(--border);
-      background-color: var(--background-subtle);
       padding: var(--space-3);
       width: 100%;
     }
-  }
-
-  p {
-    --font-family: 'JetBrains Mono' !important;
   }
 </style>
