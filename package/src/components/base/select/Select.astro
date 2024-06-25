@@ -14,6 +14,7 @@ type Props<As extends 'div'> = Polymorphic<{ as: As }> & {
     | ComponentProps<typeof SelectOption>
     | ComponentProps<typeof SelectOption>['text']
   )[]
+  value?: ComponentProps<typeof SelectOption>['value']
   icon?: ComponentProps<typeof Icon> | ComponentProps<typeof Icon>['name']
 } & Pick<ComponentProps<typeof SelectElement>, 'name' | 'required' | 'disabled'>
 
@@ -24,6 +25,7 @@ const {
   options,
   icon = 'chevron-down',
   name,
+  value,
   required,
   disabled,
   ...rest
@@ -36,6 +38,7 @@ const {
   {...rest}
 >
   <Label
+    contrast
     for={name}
     {...typeof label === 'string' ? { text: label } : label}
   />
@@ -48,12 +51,13 @@ const {
     >
       <SelectOption
         text={placeholder}
-        disabled
         selected
+        disabled
       />
       {
         options?.map((option: any) => (
           <SelectOption
+            selected={option.value === value}
             {...(typeof option === 'string' ? { text: option } : option)}
           />
         ))

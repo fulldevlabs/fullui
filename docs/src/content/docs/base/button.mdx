@@ -1,27 +1,36 @@
 ---
 title: Button
 description: A button or a component that looks like a button.
+
 props:
-  - prop: icon
+  - name: icon
     type: 'string'
-  - prop: size
-    type: 'sm | md | lg'
-  - prop: variant
-    type: 'solid | soft | surface | outline | ghost | link'
-  - prop: text
+  - name: size
+    type: sm | md | lg
+    options: [sm, md, lg]
+  - name: color
+    type: base | brand
+    options: [base, brand]
+  - name: variant
+    type: solid | soft | surface | outline | ghost | link
+    options: [solid, soft, surface, outline, ghost, link]
+    value: outline
+  - name: text
     type: string
     value: Button
-  - prop: html
+  - name: html
     type: string
-  - prop: as
+    value: Button
+  - name: as
     type: HTMLTag
     default: a
     value: button
-  - prop: HTML Attributes
+  - name: HTML Attributes
     type: Polymorphic<as>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
+import InlineStory from '../../../components/InlineStory.astro'
 import ThemeProp from '../../props/ThemeProp.mdx'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
@@ -29,7 +38,11 @@ import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
 
+{JSON.stringify(url)}
+
 <br />
+
+<InlineStory component="Button" props={frontmatter.props} />
 
 ```astro live
 ---
