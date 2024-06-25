@@ -1,6 +1,6 @@
 ---
 import { Code } from 'astro:components'
-import { Input, Select } from 'fulldev-ui'
+import { Button, Icon, Input, Label, Select } from 'fulldev-ui'
 import { pascal } from 'radash'
 
 interface Props {
@@ -38,6 +38,21 @@ let propsString: string = ''
 props.map(({ name, value }) => {
   propsString += name + '="' + value + '" '
 })
+
+const codeSnippet =
+  `--- 
+import { ` +
+  component.charAt(0).toUpperCase() +
+  component.slice(1) +
+  ` } from 'fulldev-ui'
+---
+
+<` +
+  component.charAt(0).toUpperCase() +
+  component.slice(1) +
+  ` ` +
+  propsString +
+  `/>`
 ---
 
 <div class="story">
@@ -49,60 +64,51 @@ props.map(({ name, value }) => {
     {
       props.map(({ name, value, options }) =>
         options ? (
-          <Select
-            class="story-input"
-            {value}
-            {name}
-            {options}
-          />
+          <>
+            <Label>
+              <b>{name}?:</b>
+            </Label>
+            <Select
+              class="story-input"
+              {value}
+              {name}
+              {options}
+            />
+          </>
         ) : (
-          <Input
-            class="story-input"
-            {value}
-            {name}
-          />
+          <>
+            <Label>
+              <b>{name}?:</b>
+            </Label>
+            <Input
+              class="story-input"
+              {value}
+              {name}
+            />
+          </>
         )
       )
     }
   </div>
 
-  <Code
-    lang={'astro'}
-    code={`--- 
-import { ` +
-      component.charAt(0).toUpperCase() +
-      component.slice(1) +
-      ` } from 'fulldev-ui'
----
+  <div class="story-snippet">
+    <Code
+      lang={'astro'}
+      code={codeSnippet}
+    />
 
-<` +
-      component.charAt(0).toUpperCase() +
-      component.slice(1) +
-      ` ` +
-      propsString +
-      `/>`}
-  />
+    <Button
+      id="copySnippet"
+      color="base"
+      variant="outline"
+      size="sm"
+      id="copySnippet"
+      ><Icon name="copy" /></Button
+    >
+  </div>
 </div>
 
-<!-- />
-<p>---</p>
-<p>
-  import {
-    '{ ' + component.charAt(0).toUpperCase() + component.slice(1) + ' }'
-  } from 'fulldev-ui'
-</p>
-<p>---</p>
-<p>
-  {'<' + component.charAt(0).toUpperCase() + component.slice(1) + ' '}
-  {
-    props.map(({ name, value }) => {
-      return name + '="' + value + '" '
-    })
-  }
-  {'/>'}
-</p> -->
-
-<script is:inline>
+<script define:vars={{ codeSnippet }} is:inline>
   const inputs = document.querySelectorAll('.story-input')
 
   inputs.forEach((input) => {
@@ -113,6 +119,10 @@ import { ` +
       window.location.href = url
     })
   })
+
+  document
+    .getElementById('copySnippet')
+    .addEventListener('click', () => navigator.clipboard.writeText(codeSnippet))
 </script>
 
 <style>
@@ -147,11 +157,18 @@ import { ` +
       width: 100%;
     }
 
-    .astro-code {
-      margin: 0;
+    .story-snippet {
+      display: flex;
+      justify-content: space-between;
       background-color: var(--background-subtle) !important;
       padding: var(--space-3);
       font-size: var(--text-label);
+
+      .astro-code {
+        margin: 0;
+        background-color: var(--background-subtle) !important;
+        font-size: var(--text-label);
+      }
     }
   }
 </style>
