@@ -2,18 +2,36 @@
 title: List
 description: A native, styled list element with list items inside.
 props:
-  - prop: items
-    type: string | array
-    default: undefined
-    value: ['Item 1', 'Item 2', 'Item 3']
+  list:
+    - prop: items
+      type: string | array
+      value: ['Item 1', 'Item 2', 'Item 3']
+    - prop: size
+      type: xs | sm | md | lg | xl
+    - prop: color
+      type: base | accent
+    - prop: contrast
+      type: boolean
+    - prop: as
+      type: HTMLTag
+      default: ul
+    - prop: HTML Attributes
+      type: Polymorphic<as>
+  listItem:
+    - prop: html
+      type: string
+    - prop: text
+      type: string
+    - prop: as
+      type: HTMLTag
+      default: li
+    - prop: HTML Attributes
+      type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
 import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
@@ -34,9 +52,19 @@ import { List, ListItem } from 'fulldev-ui'
 
 ## Props
 
+### `<List>`
+
+<PropsTable props={frontmatter.props.list} />
+
+### `<ListItem>`
+
+<PropsTable props={frontmatter.props.listItem} />
+
+## Examples
+
 ### `items`
 
-**Type:** `(ListItem | string)[]`
+**Type:** `(ListItem | ListItem['text'])[]`
 
 ```astro live
 ---
@@ -45,18 +73,6 @@ import { List } from 'fulldev-ui'
 
 <List items={['Item 1', { text: 'Item 2' }]} />
 ```
-
-#### `item.text`
-
-<TextProp />
-
-#### `item.html`
-
-<HtmlProp />
-
-#### `li` HTMLAttributes
-
-All HTML `<li>` attributes are accepted as props too.
 
 ### `size`
 
@@ -86,9 +102,7 @@ import { List } from 'fulldev-ui'
 <List density="compact" size="lg" items={['Item 1', 'Item 2']} />
 ```
 
-### `variant`
-
-**Type:** `color?: 'base' | 'muted'`
+### `color`
 
 <VariantProp />
 
@@ -97,14 +111,18 @@ import { List } from 'fulldev-ui'
 import { List } from 'fulldev-ui'
 ---
 
-<List variant="base" items={['Item 1', 'Item 2']} />
-<List variant="muted" items={['Item 1', 'Item 2']} />
+<List color="base" items={['Item 1', 'Item 2']} />
+<List color="muted" items={['Item 1', 'Item 2']} />
 ```
 
-### `theme`
+### `contrast`
 
-<ThemeProp />
+Set to `true` by default on Headings, which you can override by setting it to `false`.
 
-### HTML Attributes
+```astro live
+---
+import { List } from 'fulldev-ui'
+---
 
-All regular HTML attributes for the `<list>` element are accepted as props too.
+<List contrast={false} items={['Item 1', 'Item 2']} />
+```

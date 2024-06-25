@@ -1,46 +1,93 @@
 ---
 title: Deck
+description: Use this as the main wrapper for your grouped cards.
+props:
+  - prop: structure
+    type: 'bento | carousel | grid | masonry'
+    default: grid
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: compact
+    type: attribute
+  - prop: theme
+    type: string
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: div
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import StructureProp from '../../props/StructureProp.mdx'
 
-Use this as the main wrapper for your grouped cards.
+import CarouselProp from '../../props/structures/Carousel.mdx'
+import GridProp from '../../props/structures/Grid.mdx'
+import MasonryProp from '../../props/structures/Masonry.mdx'
+
+{frontmatter.description}
 
 <br />
 
 ```astro live
 ---
-import { Card, Deck } from 'fulldev-ui'
+import { Card, Deck, Heading, Paragraph } from 'fulldev-ui'
 ---
 
 <Deck>
-  <Card>Card</Card>
-  <Card>Card</Card>
-  <Card>Card</Card>
+  <Card>
+    <Heading>Lorem ipsum dolor</Heading>
+    <Paragraph
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Paragraph
+    >
+  </Card>
+  <Card>
+    <Heading>Lorem ipsum dolor</Heading>
+    <Paragraph
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Paragraph
+    >
+  </Card>
+  <Card>
+    <Heading>Lorem ipsum dolor</Heading>
+    <Paragraph
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Paragraph
+    >
+  </Card>
+  <Card>
+    <Heading>Lorem ipsum dolor</Heading>
+    <Paragraph
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Paragraph
+    >
+  </Card>
 </Deck>
 ```
 
 ## Props
 
-### `structure`
+<PropsTable props={frontmatter.props} />
 
-**Type:** `'bento' | 'carousel' | 'grid' | 'masonry' = 'grid'`
-
-<StructureProp />
+## Examples
 
 ### `size`
 
 <SizeProp />
 
-### `theme`
+### `structure`
 
-<ThemeProp />
+Applies all **styles & props** of the chosen `Structure` component to this component.
 
-### `as` & HTML Attributes
+#### `carousel`
 
-**Type:** `as?: HTMLTag = 'section'`
+<CarouselProp />
 
-<AsProp />
+#### `grid`
+
+<GridProp />
+
+#### `masonry`
+
+<MasonryProp />

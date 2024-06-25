@@ -1,0 +1,71 @@
+---
+title: Rating
+description: Displays star icons for ratings from 1 to 5.
+sidebar:
+  hidden: true
+props:
+  - prop: value
+    type: string
+    default: '1'
+    value: '5'
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: div
+  - prop: HTML Attributes
+    type: Polymorphic<as>
+---
+
+import PropsTable from '../../../components/PropsTable.astro'
+
+import SizeProp from '../../props/SizeProp.mdx'
+import CompactProp from '../../props/CompactProp.mdx'
+
+{frontmatter.description}
+
+<br />
+
+```astro live
+---
+import { Rating } from 'fulldev-ui'
+---
+
+<Rating value="5" />
+```
+
+## Props
+
+<PropsTable props={frontmatter.props} />
+
+### `size`
+
+<SizeProp />
+
+```astro live
+---
+import { Rating } from 'fulldev-ui'
+---
+
+<Rating size="sm" />
+<Rating size="md" />
+<Rating size="lg" />
+```
+
+### `compact`
+
+<CompactProp />
+
+```astro live
+---
+import { Rating } from 'fulldev-ui'
+---
+
+<Rating compact="true" size="sm" />
+<Rating compact="true" size="md" />
+<Rating compact="true" size="lg" />
+```

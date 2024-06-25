@@ -1,45 +1,91 @@
 ---
 title: Box
+description: General Segment that you always use when none of the others props are applicable.
+props:
+  - prop: structure
+    type: 'row | column | split | spread | grid | bento | masonry | carousel'
+  - prop: size
+    type: 'sm | md | lg'
+    default: 'md'
+  - prop: compact
+    type: attribute
+  - prop: theme
+    type: string
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: section
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import StructureProp from '../../props/StructureProp.mdx'
 
-General Segment that you always use when none of the others props are applicable.
+import CarouselProp from '../../props/structures/Carousel.mdx'
+import ColumnProp from '../../props/structures/Column.mdx'
+import GridProp from '../../props/structures/Grid.mdx'
+import MasonryProp from '../../props/structures/Masonry.mdx'
+import RowProp from '../../props/structures/Row.mdx'
+import SplitProp from '../../props/structures/Split.mdx'
+import SpreadProp from '../../props/structures/Spread.mdx'
+
+{frontmatter.description}
 
 <br />
 
 ```astro live
 ---
-import { Box, Card } from 'fulldev-ui'
+import { Box, Button, Card } from 'fulldev-ui'
 ---
 
 <Box structure="column">
   <Card>Card</Card>
-  <Card>Card</Card>
+  <Button>Button</Button>
 </Box>
 ```
 
 ## Props
 
-### `structure`
+<PropsTable props={frontmatter.props} />
 
-**Type:** `'row' | 'column' | 'split' | 'spread' | 'grid' | 'bento' | 'masonry' | 'carousel'`
-
-<StructureProp />
+## Examples
 
 ### `size`
 
 <SizeProp />
 
-### `theme`
+### `structure`
 
-<ThemeProp />
+Applies all **styles & props** of the chosen `Structure` component to this component.
 
-### `as` & HTML Attributes
+#### `carousel`
 
-**Type:** `as?: HTMLTag = 'section'`
+<CarouselProp />
 
-<AsProp />
+#### `column`
+
+<ColumnProp />
+
+#### `grid`
+
+<GridProp />
+
+#### `masonry`
+
+<MasonryProp />
+
+#### `row`
+
+<RowProp />
+
+#### `split`
+
+<SplitProp />
+
+#### `spread`
+
+<SpreadProp />

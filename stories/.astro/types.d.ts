@@ -125,6 +125,7 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
+<<<<<<< HEAD
 		"components": {
 "badge.md": {
 	id: "badge.md";
@@ -198,6 +199,9 @@ declare module 'astro:content' {
 } & { render(): Render[".md"] };
 };
 
+=======
+		
+>>>>>>> v0.3
 	};
 
 	type DataEntryMap = {
@@ -206,5 +210,9 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
+<<<<<<< HEAD
 	export type ContentConfig = typeof import("./../src/content/config.js");
+=======
+	export type ContentConfig = never;
+>>>>>>> v0.3
 }

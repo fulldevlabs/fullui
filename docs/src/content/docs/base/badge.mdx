@@ -2,18 +2,27 @@
 title: Badge
 description: A badge useful for displaying a small amount of information.
 props:
+  - prop: icon
+    type: Icon | Icon['name']
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: variant
+    type: 'solid | soft | surface | outline | ghost'
   - prop: text
     type: string
-    default: undefined
     value: Badge
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: div
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
 import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
@@ -29,6 +38,10 @@ import { Badge } from 'fulldev-ui'
 ```
 
 ## Props
+
+<PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `icon`
 
@@ -75,8 +88,6 @@ import { Badge } from 'fulldev-ui'
 
 ### `variant`
 
-**Type:** `color?: 'primary' | 'secondary' | 'outline' | 'ghost' = 'primary'`
-
 <VariantProp />
 
 ```astro live
@@ -85,25 +96,8 @@ import { Badge } from 'fulldev-ui'
 ---
 
 <Badge variant="primary">Badge</Badge>
-<Badge variant="secondary">Badge</Badge>
+<Badge variant="raised">Badge</Badge>
+<Badge variant="muted">Badge</Badge>
+<Badge variant="accent">Badge</Badge>
 <Badge variant="outline">Badge</Badge>
-<Badge variant="ghost">Badge</Badge>
 ```
-
-### `theme`
-
-<ThemeProp />
-
-### `text`
-
-<TextProp />
-
-### `html`
-
-<HtmlProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'div'`
-
-<AsProp />

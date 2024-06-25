@@ -1,0 +1,71 @@
+---
+title: Radio
+description: A native, styled radio input element.
+props:
+  - prop: label
+    type: string
+    default: label ?? name
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+---
+
+import PropsTable from '../../../components/PropsTable.astro'
+
+import SizeProp from '../../props/SizeProp.mdx'
+import CompactProp from '../../props/CompactProp.mdx'
+
+{frontmatter.description}
+
+<br />
+
+```astro live
+---
+import { Group, Radio } from 'fulldev-ui'
+---
+
+<Radio name="component" options={['1', '2']} />
+<Group>
+  <Radio name="component" value="1" />
+  <Radio name="component" value="2" />
+</Group>
+```
+
+## Props
+
+<PropsTable props={frontmatter.props} />
+
+### `size`
+
+<SizeProp />
+
+```astro live
+---
+import { Group, Radio } from 'fulldev-ui'
+---
+
+<Group>
+  <Radio size="sm" name="size" />
+  <Radio size="md" name="size" />
+  <Radio size="lg" name="size" />
+</Group>
+```
+
+### `compact`
+
+<CompactProp />
+
+```astro live
+---
+import { Group, Radio } from 'fulldev-ui'
+---
+
+<Group>
+  <Radio density="compact" size="sm" name="density" />
+  <Radio density="compact" size="md" name="density" />
+  <Radio density="compact" size="lg" name="density" />
+</Group>
+```

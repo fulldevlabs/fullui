@@ -1,15 +1,25 @@
 ---
 title: Switch
 description: A native checkbox input, styled as a switch with pure CSS.
+props:
+  - prop: size
+    type: 'sm | md | lg'
+    default: xs
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: span
+    value: span # Required for showcasing on /components
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
 
@@ -24,6 +34,10 @@ import { Switch } from 'fulldev-ui'
 ```
 
 ## Props
+
+<PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `size`
 
@@ -52,13 +66,3 @@ import { Switch } from 'fulldev-ui'
 <Switch density="compact" size="md" />
 <Switch density="compact" size="lg" />
 ```
-
-### `theme`
-
-<ThemeProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'a'`
-
-<AsProp />

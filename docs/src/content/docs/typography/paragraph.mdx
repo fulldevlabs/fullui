@@ -2,18 +2,27 @@
 title: Paragraph
 description: A native, styled paragraph element.
 props:
+  - prop: size
+    type: xs | sm | md | lg | xl
+  - prop: color
+    type: base | brand
+  - prop: contrast
+    type: boolean
+  - prop: html
+    type: string
   - prop: text
     type: string
-    default: undefined
     value: The quick brown fox jumps over the lazy dog
+  - prop: as
+    type: HTMLTag
+    default: p
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
 import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
@@ -29,6 +38,10 @@ import { Paragraph } from 'fulldev-ui'
 ```
 
 ## Props
+
+<PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `size`
 
@@ -58,35 +71,29 @@ import { Paragraph } from 'fulldev-ui'
 <Paragraph density="compact" size="lg">The quick brown fox jumps</Paragraph>
 ```
 
-### `variant`
-
-**Type:** `color?: 'base' | 'muted'`
+### `color`
 
 <VariantProp />
+
+```astro live
+---
+import { Group, Paragraph } from 'fulldev-ui'
+---
+
+<Group>
+  <Paragraph color="base">The quick brown fox jumps</Paragraph>
+  <Paragraph color="muted">The quick brown fox jumps</Paragraph>
+</Group>
+```
+
+### `contrast`
+
+Set to `true` by default on Headings, which you can override by setting it to `false`.
 
 ```astro live
 ---
 import { Paragraph } from 'fulldev-ui'
 ---
 
-<Paragraph variant="base">The quick brown fox jumps</Paragraph>
-<Paragraph variant="muted">The quick brown fox jumps</Paragraph>
+<Paragraph contrast={false}>The quick brown fox jumps</Paragraph>
 ```
-
-### `theme`
-
-<ThemeProp />
-
-### `text`
-
-<TextProp />
-
-### `html`
-
-<HtmlProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'h2'`
-
-<AsProp />

@@ -1,32 +1,31 @@
 ---
 title: Link
-description: A native, styled link element.
+description: A polymorphic, adaptable link component.
 props:
-  - prop: href
+  - prop: size
+    type: xs | sm | md | lg | xl
+  - prop: color
+    type: base | brand
+  - prop: contrast
+    type: boolean
+  - prop: html
     type: string
-    default: undefined
-    value: /typography/link
   - prop: text
     type: string
-    default: undefined
     value: Link
-  - prop: as
+  - prop: href
     type: string
+    value: /typography/link
+  - prop: as
+    type: HTMLTag
     default: a
     value: button
-  - prop: style
-    type: string
-    default: undefined
-    value: 'background: none; border: none;'
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
 
@@ -37,10 +36,14 @@ import VariantProp from '../../props/VariantProp.mdx'
 import { Link } from 'fulldev-ui'
 ---
 
-<Link href="#">Link</Link>
+<Link href="/base/link">Link</Link>
 ```
 
 ## Props
+
+<PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `size`
 
@@ -51,30 +54,12 @@ import { Link } from 'fulldev-ui'
 import { Link } from 'fulldev-ui'
 ---
 
-<Link href="#" size="sm">Link</Link>
-<Link href="#" size="md">Link</Link>
-<Link href="#" size="lg">Link</Link>
+<Link href="/base/link" size="sm">Link</Link>
+<Link href="/base/link" size="md">Link</Link>
+<Link href="/base/link" size="lg">Link</Link>
 ```
 
-### `compact`
-
-<CompactProp />
-
-```astro live
----
-import { Link } from 'fulldev-ui'
----
-
-<Link href="#" density="compact" size="sm">Link</Link>
-<Link href="#" density="compact" size="md">Link</Link>
-<Link href="#" density="compact" size="lg">Link</Link>
-```
-
-### `variant`
-
-**Type:** `variant?: 'muted'`
-
-<VariantProp />
+### `contrast`
 
 ```astro live
 ---
@@ -82,23 +67,5 @@ import { Link } from 'fulldev-ui'
 ---
 
 <Link href="#">Link</Link>
-<Link href="#" variant="muted">Link</Link>
+<Link href="#" contrast>Link</Link>
 ```
-
-### `theme`
-
-<ThemeProp />
-
-### `text`
-
-<TextProp />
-
-### `html`
-
-<HtmlProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'a'`
-
-<AsProp />

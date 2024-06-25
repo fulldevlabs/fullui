@@ -1,20 +1,27 @@
 ---
 title: Label
-description: A native, styled label element.
+description: A polymorphic, adaptable label component.
 props:
+  - prop: size
+    type: sm | md | lg
+  - prop: color
+    type: base | brand
+  - prop: contrast
+    type: boolean
+  - prop: html
+    type: string
   - prop: text
     type: string
-    default: undefined
     value: Label
+  - prop: as
+    type: HTMLTag
+    default: label
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
 
@@ -30,6 +37,10 @@ import { Label } from 'fulldev-ui'
 
 ## Props
 
+<PropsTable props={frontmatter.props} />
+
+## Examples
+
 ### `size`
 
 <SizeProp />
@@ -44,49 +55,13 @@ import { Label } from 'fulldev-ui'
 <Label size="lg">Label</Label>
 ```
 
-### `compact`
-
-<CompactProp />
+### `contrast`
 
 ```astro live
 ---
 import { Label } from 'fulldev-ui'
 ---
 
-<Label density="compact" size="sm">Label</Label>
-<Label density="compact" size="md">Label</Label>
-<Label density="compact" size="lg">Label</Label>
+<Label>Label</Label>
+<Label contrast>Label</Label>
 ```
-
-### `variant`
-
-**Type:** `color?: 'base' | 'muted'`
-
-<VariantProp />
-
-```astro live
----
-import { Label } from 'fulldev-ui'
----
-
-<Label variant="base">Label</Label>
-<Label variant="muted">Label</Label>
-```
-
-### `theme`
-
-<ThemeProp />
-
-### `text`
-
-<TextProp />
-
-### `html`
-
-<HtmlProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'label'`
-
-<AsProp />

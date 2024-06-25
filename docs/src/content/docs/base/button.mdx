@@ -2,22 +2,29 @@
 title: Button
 description: A button or a component that looks like a button.
 props:
+  - prop: icon
+    type: 'string'
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: variant
+    type: 'solid | soft | surface | outline | ghost | link'
   - prop: text
     type: string
-    default: undefined
     value: Button
-  - prop: as
+  - prop: html
     type: string
+  - prop: as
+    type: HTMLTag
     default: a
     value: button
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
+import PropsTable from '../../../components/PropsTable.astro'
 import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
 import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
@@ -29,10 +36,14 @@ import VariantProp from '../../props/VariantProp.mdx'
 import { Button } from 'fulldev-ui'
 ---
 
-<Button>Button</Button>
+<Button href="/base/button">Button</Button>
 ```
 
 ## Props
+
+<PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `icon`
 
@@ -82,8 +93,6 @@ import { Button } from 'fulldev-ui'
 
 ### `variant`
 
-**Type:** `color?: 'solid' | 'soft' | 'surface' | 'outline' | 'ghost' = 'solid'`
-
 <VariantProp />
 
 ```astro live
@@ -96,22 +105,5 @@ import { Button } from 'fulldev-ui'
 <Button variant="surface">Button</Button>
 <Button variant="outline">Button</Button>
 <Button variant="ghost">Button</Button>
+<Button variant="link">Button</Button>
 ```
-
-### `theme`
-
-<ThemeProp />
-
-### `text`
-
-<TextProp />
-
-### `html`
-
-<HtmlProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'a'`
-
-<AsProp />

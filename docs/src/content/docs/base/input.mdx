@@ -2,19 +2,22 @@
 title: Input
 description: A native, styled input element.
 props:
+  - prop: label
+    type: string
   - prop: placeholder
     type: string
-    default: undefined
     value: Name
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: text
+    type: string
+  - prop: html
+    type: string
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
 
@@ -25,10 +28,14 @@ import VariantProp from '../../props/VariantProp.mdx'
 import { Input } from 'fulldev-ui'
 ---
 
-<Input name="name" placeholder="Name" />
+<Input label="Textarea example" name="name" placeholder="Name" />
 ```
 
 ## Props
+
+<PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `size`
 
@@ -57,11 +64,3 @@ import { Input } from 'fulldev-ui'
 <Input density="compact" size="md" name="name" placeholder="name" />
 <Input density="compact" size="lg" name="name" placeholder="name" />
 ```
-
-### `theme`
-
-<ThemeProp />
-
-### HTML Attributes
-
-All regular HTML attributes for the `input` element are accepted as props too.

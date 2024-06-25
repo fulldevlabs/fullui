@@ -1,20 +1,29 @@
 ---
 title: Heading
-description: A native, styled heading element.
+description: A polymorphic, responsive, adaptable heading component.
 props:
+  - prop: size
+    type: xs | sm | md | lg | xl | 2xl | 3xl | 4xl | 5xl
+  - prop: color
+    type: base | brand
+  - prop: contrast
+    type: boolean
+    default: true
+  - prop: html
+    type: string
   - prop: text
     type: string
-    default: undefined
     value: The quick brown fox jumps
+  - prop: as
+    type: HTMLTag
+    default: h2
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import TextProp from '../../props/TextProp.mdx'
-import HtmlProp from '../../props/HtmlProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
 
 {frontmatter.description}
 
@@ -25,100 +34,77 @@ import VariantProp from '../../props/VariantProp.mdx'
 import { Heading } from 'fulldev-ui'
 ---
 
-<Heading>The quick brown fox jumps</Heading>
+<Heading>The quick brown fox jumps over the lazy dog</Heading>
 ```
 
 ## Props
 
-### `level`
+<PropsTable props={frontmatter.props} />
 
-**Type:** `size?: '1' | '2' | '3' | '4' | '5' | '6' = '2'`
-
-A special prop for heading, that sets the HTML tag to be used (just like `as`) and the corresponding size (just like `size`).
-
-The reason for this is that you might have an article with size `md` and different levels of heading in it.
-
-```astro live
----
-import { Heading } from 'fulldev-ui'
----
-
-<Heading level="1">The quick brown fox jumps</Heading>
-<Heading level="2">The quick brown fox jumps</Heading>
-<Heading level="3">The quick brown fox jumps</Heading>
-<Heading level="4">The quick brown fox jumps over the lazy dog</Heading>
-<Heading level="5">The quick brown fox jumps over the lazy dog</Heading>
-<Heading level="6">The quick brown fox jumps over the lazy dog</Heading>
-```
+## Examples
 
 ### `size`
 
-**Type:** `size?: 'sm' | 'md' | 'lg'`
+<SizeProp />
 
-Sets the size for this component and **all its children**. This changes the values used for spacing, fonts and other size related properties.
+Heading sizes are handpicked to match the body text size. For each body text size there are
+6 matching heading sizes; one for each heading level h1-h6.
 
-:::note
-The Heading component is unique in that it support more than 3 sizes. Me might change this behavior, depending on if we find more sizes to be useful for other components as well.
-:::
+The sizes are also responsive, where the larger sizes respond more than the smaller ones.
 
 ```astro live
 ---
 import { Heading } from 'fulldev-ui'
 ---
 
-<Heading size="sm">The quick brown fox jumps</Heading>
-<Heading size="md">The quick brown fox jumps</Heading>
-<Heading size="lg">The quick brown fox jumps</Heading>
+<Heading size="xs">The quick brown fox jumps over the lazy dog</Heading>
+<Heading size="sm">The quick brown fox jumps over the lazy dog</Heading>
+<Heading size="md">The quick brown fox jumps over the lazy dog</Heading>
+<Heading size="lg">The quick brown fox jumps over the dog</Heading>
+<Heading size="xl">The quick brown fox jumps over the dog</Heading>
+<Heading size="2xl">The quick brown fox jumps over the dog</Heading>
+<Heading size="3xl">The quick brown fox jumps over the dog</Heading>
+<Heading size="4xl">The quick brown fox jumps over the dog</Heading>
+<Heading size="5xl">The quick brown fox jumps over the dog</Heading>
 ```
 
 ### `compact`
 
 <CompactProp />
 
-```astro live
----
-import { Heading } from 'fulldev-ui'
----
+This prop **cannot** be used on the Heading component directly, but the Heading does adapt when used on a parent.
 
-<Heading density="compact" size="sm"
-  >The quick brown fox jumps over the lazy dog</Heading
->
-<Heading density="compact" size="md"
-  >The quick brown fox jumps over the lazy dog</Heading
->
-<Heading density="compact" size="lg"
-  >The quick brown fox jumps over the lazy dog</Heading
->
-```
-
-### `variant`
-
-**Type:** `color?: 'base' | 'muted'`
-
-<VariantProp />
+Font-size are reduced relative to their size and also a max-width is set to prevent the text from becoming too wide.
 
 ```astro live
 ---
-import { Heading } from 'fulldev-ui'
+import { Card, Heading } from 'fulldev-ui'
 ---
 
-<Heading variant="muted">The quick brown fox jumps</Heading>
+<Card>
+  <Heading compact size="xs">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="sm">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="md">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="lg">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="xl">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="2xl">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="3xl">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="4xl">The quick brown fox jumps over the dog</Heading>
+  <Heading compact size="5xl">The quick brown fox jumps over the dog</Heading>
+</Card>
 ```
 
-### `theme`
+### `contrast`
 
-<ThemeProp />
+Set to `true` by default on Headings, which you can override by setting it to `false`.
 
-### `text`
+```astro live
+---
+import { Group, Heading } from 'fulldev-ui'
+---
 
-<TextProp />
-
-### `html`
-
-<HtmlProp />
-
-### `as` & HTML Attributes
-
-**Type:** `as?: HTMLTag = 'h2'`
-
-<AsProp />
+<Group>
+  <Heading>The quick brown fox jumps over the dog</Heading>
+  <Heading contrast={false}>The quick brown fox jumps over the dog</Heading>
+</Group>
+```

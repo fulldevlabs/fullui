@@ -1,49 +1,71 @@
 ---
 title: Group
+description: Structures children in a row with wrapping.
+props:
+  - prop: structure
+    type: 'bento | carousel | grid | masonry'
+    default: grid
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: compact
+    type: attribute
+  - prop: theme
+    type: string
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: div
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import StructureProp from '../../props/StructureProp.mdx'
 
-Structures children in a row with wrapping.
+import CarouselProp from '../../props/structures/Carousel.mdx'
+import GridProp from '../../props/structures/Grid.mdx'
+import MasonryProp from '../../props/structures/Masonry.mdx'
+
+{frontmatter.description}
 
 <br />
 
 ```astro live
 ---
-import { Card, Group } from 'fulldev-ui'
+import { Group, Input, Textarea } from 'fulldev-ui'
 ---
 
 <Group>
-  <Card>Card</Card>
-  <Card>Card</Card>
-  <Card>Card</Card>
-  <Card>Card</Card>
-  <Card>Card</Card>
-  <Card>Card</Card>
+  <Input label="Textarea example" name="name" placeholder="Name" />
+  <Textarea label="Textarea example" name="message" placeholder="Message" />
 </Group>
 ```
 
 ## Props
 
-### `structure`
+<PropsTable props={frontmatter.props} />
 
-**Type:** `'bento' | 'carousel' | 'grid' | 'masonry' = 'grid'`
-
-<StructureProp />
+## Examples
 
 ### `size`
 
 <SizeProp />
 
-### `theme`
+### `structure`
 
-<ThemeProp />
+Applies all **styles & props** of the chosen `Structure` component to this component.
 
-### `as` & HTML Attributes
+#### `carousel`
 
-**Type:** `as?: HTMLTag = 'section'`
+<CarouselProp />
 
-<AsProp />
+#### `grid`
+
+<GridProp />
+
+#### `masonry`
+
+<MasonryProp />

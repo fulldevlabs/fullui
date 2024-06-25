@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import Component from '../../_Component.astro'
+
+type Props = HTMLAttributes<'th'> & {
+  html?: string
+  text?: string
+}
+
+const { ...rest } = Astro.props
+---
+
+<Component
+  class:list={['table-head']}
+  as="th"
+  {...rest}
+>
+  <slot />
+</Component>
+
+<style is:global lang="scss">
+  @import '../../../css/utils.scss';
+
+  @include component('table-head') {
+    vertical-align: middle;
+    padding: var(--element-2) var(--element-3);
+    color: var(--foreground-contrast);
+    font-size: var(--text-label);
+    text-align: left;
+  }
+</style>

@@ -1,50 +1,78 @@
 ---
 title: Section
+description: Use this as the main wrapper for your full-width sections.
+props:
+  - prop: structure
+    type: 'stack | split | spread | group'
+    default: stack
+  - prop: frame
+    type: 'fill | viewport | panel'
+  - prop: variant
+    type: 'fill | subtle | outline | soft | solid | surface'
+  - prop: size
+    type: 'sm | md | lg'
+  - prop: compact
+    type: attribute
+  - prop: theme
+    type: string
+  - prop: text
+    type: string
+  - prop: html
+    type: string
+  - prop: as
+    type: HTMLTag
+    default: section
+  - prop: HTML Attributes
+    type: Polymorphic<as>
 ---
 
-import ThemeProp from '../../props/ThemeProp.mdx'
-import AsProp from '../../props/AsProp.mdx'
+import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import StructureProp from '../../props/StructureProp.mdx'
+import VariantProp from '../../props/VariantProp.mdx'
+import SplitProp from '../../props/structures/Split.mdx'
+import SpreadProp from '../../props/structures/Spread.mdx'
+import PanelProp from '../../props/frames/Panel.mdx'
+
+{frontmatter.description}
+
+<br />
 
 :::note
 Since the Section component is meant to be used as a full-width block, it cannot be previewed here in the docs. Please see the [homepage](/) for examples.
 :::
 
-Use this as the main wrapper for your full-width sections.
-
-<br />
-
 ## Props
 
-### `structure`
+<PropsTable props={frontmatter.props} />
 
-**Type:** `'stack' | 'split' | 'spread' | 'group' = 'stack'`
-
-<StructureProp />
+## Examples
 
 ### `frame`
-
-**Type:** `'fill' | 'viewport' 'panel' = 'fill'`
 
 If set to `viewport` the section has a minimum height of 100vh.
 
 If set to `panel` margins are added around certain child elements and backgrounds and borders are applied according to your [color variables](/overview/theming). You can use the variant prop explained below to adjust these styles.
 
+#### `panel`
+
+<PanelProp />
+
 ### `variant`
 
-**Type:** `'base' | 'ghost' | 'soft' | 'solid'`
+<VariantProp />
 
 ### `size`
 
 <SizeProp />
 
-### `theme`
+### `structure`
 
-<ThemeProp />
+Applies all **styles & props** of the chosen `Structure` component to this component.
 
-### `as` & HTML Attributes
+#### `split`
 
-**Type:** `as?: HTMLTag = 'section'`
+<SplitProp />
 
-<AsProp />
+#### `spread`
+
+<SpreadProp />
