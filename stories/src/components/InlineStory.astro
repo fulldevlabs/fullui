@@ -1,0 +1,71 @@
+---
+import { Input, Select } from 'fulldev-ui'
+
+interface Props {
+  component: string
+  props: {
+    key: string
+    options?: any[]
+    value?: any
+  }[]
+}
+
+const components = await Astro.glob('../**/*.astro')
+
+const { component, props, ...rest } = Astro.props
+
+const Component = components.find((astroComponent) => {
+  const fileName = astroComponent.default.moduleId?.split('/').pop()
+  const componentName = fileName?.split('.')[0]
+  return componentName === component
+})?.default
+---
+
+<div class="story">
+  <div class="story-preview">
+    {Component && <Component component={component} />}
+  </div>
+  <div class="story-inputs">
+    {
+      props.map(({ key, value, options }) =>
+        options ? (
+          <Select
+            class="story-input"
+            name={key}
+            value={value}
+            options={options}
+          />
+        ) : (
+          <Input
+            class="story-input"
+            name={key}
+            {value}
+          />
+        )
+      )
+    })
+  </div>
+</div>
+
+<script is:inline>
+  const inputs = document.querySelectorAll('.story-input')
+
+  inputs.forEach((input) => {
+    input.addEventListener('change', (event) => {
+      const { name, value } = event.target
+      const url = new URL(window.location.href)
+      url.searchParams.set(name, value)
+      window.location.href = url
+    })
+  })
+</script>
+
+<style>
+  .story {
+    width: 100%;
+  }
+
+  p {
+    --font-family: 'JetBrains Mono' !important;
+  }
+</style>

@@ -1,16 +1,10 @@
 ---
-import { getEntry } from 'astro:content'
 import { Layout } from 'fulldev-ui'
 import 'fulldev-ui/radix'
 import Sidebar from '../components/Sidebar.astro'
 import Story from '../components/Story.astro'
 
 console.log(Astro.url)
-
-const component = await getEntry(
-  'components',
-  Astro.url.searchParams.get('component')
-)
 ---
 
 <Layout
