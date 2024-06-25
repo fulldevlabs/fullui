@@ -10,9 +10,10 @@ import SelectOption from './SelectOption.astro'
 type Props<As extends 'select'> = Polymorphic<{ as: As }> &
   ComponentProps<typeof Component> & {
     options?: (ComponentProps<typeof SelectOption> | string)[]
+    value?: string
   }
 
-const { as = 'select', options, ...rest } = Astro.props
+const { as = 'select', options, value, ...rest } = Astro.props
 ---
 
 <Component
@@ -29,8 +30,20 @@ const { as = 'select', options, ...rest } = Astro.props
     <slot name="before" />
     {
       options?.map((option: any) => {
-        if (isObject(option)) return <SelectOption {...option} />
-        else return <SelectOption text={option} />
+        if (isObject(option))
+          return (
+            <SelectOption
+              {...option}
+              selected={option.value == value}
+            />
+          )
+        else
+          return (
+            <SelectOption
+              text={option}
+              selected={option == value}
+            />
+          )
       })
     }
     <slot />

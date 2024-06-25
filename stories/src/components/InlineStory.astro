@@ -18,14 +18,24 @@ const { component, props } = Astro.props
 const Component = components.find((astroComponent) => {
   const fileName = astroComponent.default.moduleId?.split('/').pop()
   const componentName = fileName?.split('.')[0]
-  const passedComponentName = pascal(component)
   return componentName === pascal(component)
 })?.default
+
+Astro.url.searchParams.forEach((value, key) => {
+  const propIndex = props.findIndex((prop) => prop.name === key)
+  if (propIndex === -1) return
+  props[propIndex].value = value
+})
+
+const propsObject: any = {}
+props.forEach(({ name, value }) => {
+  propsObject[name] = value
+})
 ---
 
 <div class="story">
   <div class="story-preview">
-    {Component && <Component html="test" />}
+    {Component && <Component {...propsObject} />}
   </div>
   <div class="story-inputs">
     {
@@ -33,15 +43,15 @@ const Component = components.find((astroComponent) => {
         options ? (
           <Select
             class="story-input"
-            {name}
             {value}
+            {name}
             {options}
           />
         ) : (
           <Input
             class="story-input"
-            {name}
             {value}
+            {name}
           />
         )
       )
