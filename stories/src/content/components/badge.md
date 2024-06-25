@@ -1,15 +1,15 @@
 ---
-name: Badge
+title: Badge
 props:
-  variant:
+  - key: variant
     options: [solid, outline]
     value: outline
-  color:
+  - key: color
     options: [base, brand]
     value: base
-  size:
+  - key: size
     options: [sm, md, lg]
     value: lg
-  html:
+  - key: html
     value: Badge
 ---
