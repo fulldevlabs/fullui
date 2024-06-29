@@ -1,13 +1,14 @@
 ---
-import type { ComponentProps, HTMLTag, Polymorphic } from 'astro/types'
+import type { HTMLTag, Polymorphic } from 'astro/types'
 import Component from '../_Component.astro'
 
-type Props<As extends HTMLTag = 'li'> = Polymorphic<{ as: As }> &
-  ComponentProps<typeof Component> & {
-    html?: string
-    text?: string
-    variant?: 'base' | 'muted' | 'accent'
-  }
+type Props<As extends HTMLTag = 'li'> = Polymorphic<{ as: As }> & {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  color?: 'base' | 'brand'
+  contrast?: boolean
+  html?: string
+  text?: string
+}
 
 const { as = 'li', ...rest } = Astro.props
 ---
@@ -26,7 +27,7 @@ const { as = 'li', ...rest } = Astro.props
   @include component('list-item') {
     align-items: center;
     max-width: calc(var(--element-3) * 36);
-    color: var(--foreground);
+    color: var(--text);
     font-weight: var(--font-weight);
     font-size: var(--text-body);
     line-height: 1.625;

@@ -3,62 +3,72 @@ title: Table
 description: A native, styled table element.
 props:
   table:
-    - prop: size
+    - name: header
+      type: ComponentProps<typeof TableHeader> || ComponentProps<typeof TableHeader>['cells']
+      value: ['Product', 'Color', 'Quantity']
+    - name: body
+      type: ComponentProps<typeof TableBody> || ComponentProps<typeof TableBody>['rows']
+      value: [['Apple', 'Green', '2'], ['Banana', 'Yellow', '3']]
+    - name: footer
+      type: ComponentProps<typeof TableFooter> || ComponentProps<typeof TableFooter>['cells']
+      value: ['Total', '&zwnj;', '2']
+    - name: size
       type: sm | md | lg
-    - prop: compact
-      type: boolean
-    - prop: scheme
+    - name: color
+      type: 'base | brand'
+    - name: scheme
       type: light | dark
-    - prop: text
+    - name: text
       type: string
-    - prop: html
+    - name: html
       type: string
-    - prop: HTML Attributes
+    - name: HTML Attributes
       type: HTMLAttributes<table>
   tableHeader:
-    - prop: cells
-      type: (string | TableCell)[]
-    - prop: HTML Attributes
+    - name: cells
+      type: ComponentProps<typeof TableHead> | ComponentProps<typeof TableHead>['html']
+    - name: HTML Attributes
       type: HTMLAttributes<thead>
   tableBody:
-    - prop: rows
-      type: (string | TableRow)[][]
-    - prop: HTML Attributes
+    - name: rows
+      type: ComponentProps<typeof TableRow> | ComponentProps<typeof TableRow>['cells']
+    - name: HTML Attributes
       type: HTMLAttributes<tbody>
   tableRow:
-    - prop: cells
-      type: (string | TableCell)[]
-    - prop: HTML Attributes
+    - name: cells
+      type: ComponentProps<typeof TableCell> | ComponentProps<typeof TableCell>['text']
+    - name: HTML Attributes
       type: HTMLAttributes<tr>
   tableCell:
-    - prop: text
+    - name: text
       type: string
-    - prop: html
+    - name: html
       type: string
-    - prop: HTML Attributes
+    - name: HTML Attributes
       type: HTMLAttributes<td>
   tableHead:
-    - prop: text
+    - name: text
       type: string
-    - prop: html
+    - name: html
       type: string
-    - prop: HTML Attributes
+    - name: HTML Attributes
       type: HTMLAttributes<th>
   tableFooter:
-    - prop: cells
-      type: (string | TableCell)[]
-    - prop: HTML Attributes
+    - name: cells
+      type: ComponentProps<typeof TableCell> | ComponentProps<typeof TableCell>['text']
+    - name: HTML Attributes
       type: HTMLAttributes<tfoot>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import CompactProp from '../../props/CompactProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
+import Story from '../../../components/Story.astro'
 
 {frontmatter.description}
 
 <br />
+
+<Story title={frontmatter.title} props={frontmatter.props.table} />
 
 ```astro live
 ---
@@ -79,27 +89,27 @@ import { Table } from 'fulldev-ui'
 
 The `Table` component exists of multiple sub-components. Each sub-component has its own set of props.
 
-#### `Table` (root)
+#### `<Table>`
 
 <PropsTable props={frontmatter.props.table} />
 
-#### `TableHeader`
+#### `<TableHeader>`
 
 <PropsTable props={frontmatter.props.tableHeader} />
 
-#### `TableBody`
+#### `<TableBody>`
 
 <PropsTable props={frontmatter.props.tableBody} />
 
-#### `TableRow`
+#### `<TableRow>`
 
 <PropsTable props={frontmatter.props.tableRow} />
 
-#### `TableCell`
+#### `<TableCell>`
 
 <PropsTable props={frontmatter.props.tableCell} />
 
-#### `TableFooter`
+#### `<TableFooter>`
 
 <PropsTable props={frontmatter.props.tableFooter} />
 

@@ -147,6 +147,7 @@
     .full + .link,
     .full + .list,
     .full + .paragraph,
+    .full + .text,
     .full + .tagline,
     .full + .input,
     .full + .badge,
@@ -155,13 +156,14 @@
     }
 
     .paragraph + .paragraph,
-    .button:not(.variant-link) + .button:not(.variant-link),
+    .text + .text,
+    .button + .button,
     .input + .button {
       margin-left: var(--space-2);
     }
 
-    .label + .input {
-      margin-left: var(--space-1);
+    .checkbox-element + .label {
+      margin-left: var(--space-2);
     }
 
     .image + .full,
@@ -188,20 +190,26 @@
     .full + .link,
     .full + .list,
     .full + .paragraph,
+    .full + .text,
     .full + .tagline,
     .full + .input,
+    .full + .textarea,
+    .full + .select,
     .full + .badge,
     .full + .rating {
       margin-top: var(--space-3);
     }
 
     .paragraph + .paragraph,
+    .text + .text,
     .button:not(.variant-link) + .button:not(.variant-link),
     .input + .button {
       margin-top: var(--space-2);
     }
 
-    .label + .input {
+    .label + .input,
+    .label + .textarea,
+    .label + .select {
       margin-top: var(--space-1);
     }
 

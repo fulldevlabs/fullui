@@ -2,38 +2,33 @@
 title: Label
 description: A polymorphic, adaptable label component.
 props:
-  - prop: size
+  - name: size
     type: sm | md | lg
-  - prop: color
+  - name: color
     type: base | brand
-  - prop: text
+  - name: contrast
+    type: boolean
+  - name: html
+    type: string
+  - name: text
     type: string
     value: Label
-  - prop: html
-    type: string
-  - prop: as
-    type: string
+  - name: as
+    type: HTMLTag
     default: label
-  - prop: HTML Attributes
+  - name: HTML Attributes
     type: Polymorphic<as>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import CompactProp from '../../props/CompactProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
+import Story from '../../../components/Story.astro'
 
 {frontmatter.description}
 
 <br />
 
-```astro live
----
-import { Label } from 'fulldev-ui'
----
-
-<Label>Label</Label>
-```
+<Story {...frontmatter} />
 
 ## Props
 
@@ -56,8 +51,6 @@ import { Label } from 'fulldev-ui'
 ```
 
 ### `contrast`
-
-<VariantProp />
 
 ```astro live
 ---

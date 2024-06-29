@@ -1,25 +1,18 @@
 ---
-import { Box } from 'fulldev-ui'
-
 const { style, ...rest } = Astro.props
 ---
 
-<Box
+<div
   class:list={'decorative-box full'}
-  if={true}
   style={style}
   {...rest}
-/>
+>
+</div>
 
 <style>
   .decorative-box {
-    border: 1px solid #333949;
+    border: 1px solid var(--base-border);
     border-radius: 4px;
-    background-image: url('/landing-background.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: repeat;
-    background-color: #141822;
     width: 100%;
     min-width: 100px;
     height: 100%;

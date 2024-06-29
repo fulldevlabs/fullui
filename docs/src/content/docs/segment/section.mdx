@@ -2,37 +2,35 @@
 title: Section
 description: Use this as the main wrapper for your full-width sections.
 props:
-  - prop: structure
+  - name: structure
     type: 'stack | split | spread | group'
     default: stack
-  - prop: frame
+  - name: frame
     type: 'fill | viewport | panel'
-  - prop: variant
-    type: 'base | ghost | soft | solid'
-  - prop: size
+  - name: variant
+    type: fill | subtle | outline | soft | solid | surface
+  - name: size
     type: 'sm | md | lg'
-    default: md
-  - prop: compact
-    type: 'boolean'
-    default: false
-  - prop: theme
+  - name: compact
+    type: attribute
+  - name: theme
     type: string
-  - prop: text
+  - name: text
     type: string
-  - prop: html
+  - name: html
     type: string
-  - prop: as
-    type: string
+  - name: as
+    type: HTMLTag
     default: section
+  - name: HTML Attributes
+    type: Polymorphic<as>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import VariantProp from '../../props/VariantProp.mdx'
-
 import SplitProp from '../../props/structures/Split.mdx'
 import SpreadProp from '../../props/structures/Spread.mdx'
-
 import PanelProp from '../../props/frames/Panel.mdx'
 
 {frontmatter.description}

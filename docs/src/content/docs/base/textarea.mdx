@@ -2,44 +2,38 @@
 title: Textarea
 description: A native, styled textarea element.
 props:
-  - prop: label
-    type: string
-  - prop: placeholder
-    type: string
-    value: Message
-  - prop: size
-    type: 'sm | md | lg'
-    default: md
-  - prop: compact
+  - name: color
+    type: base | brand
+  - name: size
+    type: sm | md | lg
+  - name: contrast
     type: boolean
-    default: false
-  - prop: text
+  - name: label
     type: string
-  - prop: html
+  - name: label
     type: string
-  - prop: theme
+    value: Label
+  - name: placeholder
     type: string
-  - prop: as
+    value: Placeholder
+  - name: text
     type: string
-    default: textarea
+  - name: html
+    type: string
+  - name: HTML Attributes
+    type: Polymorphic<input>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
+import Story from '../../../components/Story.astro'
 
 {frontmatter.description}
 
 <br />
 
-```astro live
----
-import { Textarea } from 'fulldev-ui'
----
-
-<Textarea label="Textarea example" name="message" placeholder="Message" />
-```
+<Story {...frontmatter} />
 
 ## Props
 
@@ -59,18 +53,4 @@ import { Textarea } from 'fulldev-ui'
 <Textarea size="sm" name="message" placeholder="name" />
 <Textarea size="md" name="message" placeholder="name" />
 <Textarea size="lg" name="message" placeholder="name" />
-```
-
-### `compact`
-
-<CompactProp />
-
-```astro live
----
-import { Textarea } from 'fulldev-ui'
----
-
-<Textarea density="compact" size="sm" name="message" placeholder="name" />
-<Textarea density="compact" size="md" name="message" placeholder="name" />
-<Textarea density="compact" size="lg" name="message" placeholder="name" />
 ```

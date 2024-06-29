@@ -1,38 +1,38 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
+import Component from '../../_Component.astro'
 
-type Props = HTMLAttributes<'input'> & {
-  variant?: string
-  placeholder?: string
-  type?: string
-}
+type Props = HTMLAttributes<'select'>
 
-const { placeholder, type, variant, ...rest } = Astro.props
+const { ...rest } = Astro.props
 ---
 
-<input
-  placeholder={placeholder}
-  type={type || 'text'}
-  class:list={['input-control']}
-/>
+<Component
+  class:list={['select-element']}
+  as="select"
+  {...rest}
+>
+  <slot />
+</Component>
 
 <style is:global lang="scss">
   @import '../../../css/utils.scss';
 
-  @include component('input-control') {
+  @include component('select-element') {
     display: flex;
     position: relative;
     align-items: center;
+    appearance: none;
+    appearance: none;
     outline: none;
-    box-shadow: inset 0 0 0 var(--border-width) var(--border-outline);
-    border: 0px;
+    border: 1px solid var(--border);
     border-radius: var(--radius-1);
-    background-color: var(--input-background);
+    background-color: var(--background);
     padding: var(--element-2);
     width: 100%;
     min-width: var(--element-2);
     height: calc(var(--text-label) + 2 * var(--element-3));
-    color: var(--foreground);
+    color: var(--text);
     font-weight: var(--font-weight);
     font-size: var(--text-label);
     line-height: 1.25;
@@ -40,12 +40,11 @@ const { placeholder, type, variant, ...rest } = Astro.props
 
     &:hover {
       outline: none;
-      box-shadow: inset 0 0 0 1px var(--border-hover);
     }
 
     &:focus {
       outline: none;
-      box-shadow: inset 0 0 0 3px var(--border-hover);
+      box-shadow: inset 0 0 0 2px var(--border);
     }
 
     &:disabled {

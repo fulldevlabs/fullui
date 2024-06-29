@@ -3,142 +3,157 @@
 .light-theme,
 .theme-light,
 [data-theme='light'] {
-  --base-1: #f8f9fb;
-  --base-2: #f4f6f9;
-  --base-3: #ebedef;
-  --base-4: #e3e4e7;
-  --base-5: #dcdde0;
-  --base-6: #d4d5d8;
-  --base-7: #c9cacd;
-  --base-8: #b6b7ba;
-  --base-9: #88898c;
-  --base-10: #7d7f81;
-  --base-11: #5f6062;
-  --base-12: #1e2022;
+  --brand-1: #fbf9f8;
+  --brand-2: #fff1ec;
+  --brand-3: #ffe6db;
+  --brand-4: #ffd3c2;
+  --brand-5: #ffc4ad;
+  --brand-6: #ffb397;
+  --brand-7: #ff9e7e;
+  --brand-8: #f5845f;
+  --brand-9: #f50;
+  --brand-10: #ed4d00;
+  --brand-11: #ca4900;
+  --brand-12: #5b2a1a;
 
-  --base-a1: #3c3d3f04;
-  --base-a2: #1c3d5f08;
-  --base-a3: #0b1b1e11;
-  --base-a4: #07081419;
-  --base-a5: #03050f20;
-  --base-a6: #03040c28;
-  --base-a7: #01020933;
-  --base-a8: #04050a47;
-  --base-a9: #01020675;
-  --base-a10: #02040681;
-  --base-a11: #0102049f;
-  --base-a12: #000205e1;
-
-  --base-contrast: #000000;
-  --base-surface: #ffffffcc;
-  --base-indicator: #88898c;
-  --base-track: #88898c;
-
-  --brand-1: #fdfdfd;
-  --brand-2: #fafafa;
-  --brand-3: #f2f2f2;
-  --brand-4: #e9e9e9;
-  --brand-5: #e0e0e0;
-  --brand-6: #d3d3d3;
-  --brand-7: #c4c4c4;
-  --brand-8: #afafaf;
-  --brand-9: #404040;
-  --brand-10: #515151;
-  --brand-11: #6c6c6c;
-  --brand-12: #383838;
-
-  --brand-a1: #00000002;
-  --brand-a2: #00000005;
-  --brand-a3: #0000000d;
-  --brand-a4: #00000016;
-  --brand-a5: #0000001f;
-  --brand-a6: #0000002c;
-  --brand-a7: #0000003b;
-  --brand-a8: #00000050;
-  --brand-a9: #000000bf;
-  --brand-a10: #000000ae;
-  --brand-a11: #00000093;
-  --brand-a12: #000000c7;
+  --brand-a1: #d27d2906;
+  --brand-a2: #fff1ec;
+  --brand-a3: #ffe6db;
+  --brand-a4: #ffd3c2;
+  --brand-a5: #ffc4ad;
+  --brand-a6: #ffb397;
+  --brand-a7: #ff9e7e;
+  --brand-a8: #f13d02a0;
+  --brand-a9: #ff5500;
+  --brand-a10: #ed4d00;
+  --brand-a11: #ca4900;
+  --brand-a12: #481200e5;
 
   --brand-contrast: #fff;
-  --brand-surface: #f9f9f9cc;
-  --brand-indicator: #404040;
-  --brand-track: #404040;
+  --brand-surface: #ffefe8cc;
+  --brand-indicator: #f50;
+  --brand-track: #f50;
 
   color-scheme: light;
 }
 
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
-
     :root,
     .light,
     .light-theme,
     .theme-light,
     [data-theme='light'] {
-      --base-1: oklch(98.1% 0.003 264.5);
-      --base-2: oklch(97.2% 0.004 264.5);
-      --base-3: oklch(94.4% 0.004 264.5);
-      --base-4: oklch(91.9% 0.004 264.5);
-      --base-5: oklch(89.7% 0.004 264.5);
-      --base-6: oklch(87.4% 0.004 264.5);
-      --base-7: oklch(83.9% 0.004 264.5);
-      --base-8: oklch(77.9% 0.004 264.5);
-      --base-9: oklch(63.1% 0.004 264.5);
-      --base-10: oklch(59.5% 0.004 264.5);
-      --base-11: oklch(48.8% 0.004 264.5);
-      --base-12: oklch(24.1% 0.004 264.5);
+      --brand-1: oklch(98.3% 0.003 38.8);
+      --brand-2: oklch(96.9% 0.017 38.8);
+      --brand-3: oklch(94.7% 0.041 38.8);
+      --brand-4: oklch(90.9% 0.09 38.8);
+      --brand-5: oklch(87.8% 0.119 38.8);
+      --brand-6: oklch(84.4% 0.123 38.8);
+      --brand-7: oklch(79.2% 0.126 38.8);
+      --brand-8: oklch(73.1% 0.148 38.8);
+      --brand-9: oklch(67.6% 0.217 38.8);
+      --brand-10: oklch(63.7% 0.217 38.8);
+      --brand-11: oklch(57.8% 0.208 38.8);
+      --brand-12: oklch(35% 0.077 38.8);
 
-      --base-a1: color(display-p3 0.008 0.012 0.02 / 0.012);
-      --base-a2: color(display-p3 0.008 0.149 0.298 / 0.028);
-      --base-a3: color(display-p3 0.008 0.071 0.078 / 0.064);
-      --base-a4: color(display-p3 0.008 0.012 0.059 / 0.096);
-      --base-a5: color(display-p3 0.004 0.008 0.047 / 0.124);
-      --base-a6: color(display-p3 0.008 0.012 0.043 / 0.156);
-      --base-a7: color(display-p3 0.004 0.008 0.035 / 0.2);
-      --base-a8: color(display-p3 0.004 0.004 0.027 / 0.275);
-      --base-a9: color(display-p3 0.004 0.008 0.024 / 0.459);
-      --base-a10: color(display-p3 0 0.012 0.02 / 0.502);
-      --base-a11: color(display-p3 0 0.008 0.016 / 0.622);
-      --base-a12: color(display-p3 0 0.008 0.02 / 0.881);
+      --brand-a1: color(display-p3 0.792 0.4 0.016 / 0.02);
+      --brand-a2: color(display-p3 1 0.863 0.808 / 0.334);
+      --brand-a3: color(display-p3 0.961 0.361 0.008 / 0.131);
+      --brand-a4: color(display-p3 0.918 0.302 0.004 / 0.222);
+      --brand-a5: color(display-p3 0.914 0.286 0.004 / 0.301);
+      --brand-a6: color(display-p3 0.91 0.275 0.004 / 0.384);
+      --brand-a7: color(display-p3 0.902 0.255 0.004 / 0.479);
+      --brand-a8: color(display-p3 0.843 0.231 0 / 0.593);
+      --brand-a9: color(display-p3 0.91 0.259 0 / 0.831);
+      --brand-a10: color(display-p3 0.835 0.231 0 / 0.846);
+      --brand-a11: color(display-p3 0.694 0.22 0 / 0.87);
+      --brand-a12: color(display-p3 0.243 0.067 0 / 0.882);
 
-      --base-contrast: #000000;
+      --brand-contrast: #fff;
+      --brand-surface: color(display-p3 0.996 0.941 0.914 / 0.8);
+      --brand-indicator: oklch(67.6% 0.217 38.8);
+      --brand-track: oklch(67.6% 0.217 38.8);
+    }
+  }
+}
+
+:root,
+.light,
+.light-theme,
+.theme-light,
+[data-theme='light'] {
+  --base-1: #f9f9fa;
+  --base-2: #f5f6f8;
+  --base-3: #ececf0;
+  --base-4: #e3e4e9;
+  --base-5: #dcdde2;
+  --base-6: #d4d5dc;
+  --base-7: #c8cad2;
+  --base-8: #b5b7c2;
+  --base-9: #878994;
+  --base-10: #7c7e89;
+  --base-11: #5e6068;
+  --base-12: #1e1f24;
+
+  --base-a1: #3d3d3e04;
+  --base-a2: #1d3d5e08;
+  --base-a3: #0c0c3b11;
+  --base-a4: #0711391a;
+  --base-a5: #050d2d21;
+  --base-a6: #040a3029;
+  --base-a7: #020c2f35;
+  --base-a8: #01082c48;
+  --base-a9: #02061c77;
+  --base-a10: #00041a82;
+  --base-a11: #000310a0;
+  --base-a12: #000107e1;
+
+  --base-contrast: #ffffff;
+  --base-surface: #ffffffcc;
+  --base-indicator: #878994;
+  --base-track: #878994;
+
+  color-scheme: dark;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root,
+    .light,
+    .light-theme,
+    .theme-light,
+    [data-theme='light'] {
+      --base-1: oklch(98.2% 0.001 277.7);
+      --base-2: oklch(97.2% 0.003 277.7);
+      --base-3: oklch(94.5% 0.005 277.7);
+      --base-4: oklch(92% 0.006 277.7);
+      --base-5: oklch(89.8% 0.008 277.7);
+      --base-6: oklch(87.5% 0.009 277.7);
+      --base-7: oklch(84% 0.012 277.7);
+      --base-8: oklch(78% 0.016 277.7);
+      --base-9: oklch(63.1% 0.016 277.7);
+      --base-10: oklch(59.5% 0.016 277.7);
+      --base-11: oklch(48.9% 0.014 277.7);
+      --base-12: oklch(24.1% 0.01 277.7);
+
+      --base-a1: color(display-p3 0.012 0.012 0.016 / 0.012);
+      --base-a2: color(display-p3 0.012 0.149 0.294 / 0.028);
+      --base-a3: color(display-p3 0.012 0.012 0.196 / 0.064);
+      --base-a4: color(display-p3 0.008 0.047 0.208 / 0.1);
+      --base-a5: color(display-p3 0.004 0.031 0.161 / 0.127);
+      --base-a6: color(display-p3 0.004 0.027 0.157 / 0.159);
+      --base-a7: color(display-p3 0.004 0.043 0.161 / 0.207);
+      --base-a8: color(display-p3 0.004 0.031 0.157 / 0.282);
+      --base-a9: color(display-p3 0.004 0.02 0.102 / 0.465);
+      --base-a10: color(display-p3 0 0.016 0.09 / 0.508);
+      --base-a11: color(display-p3 0 0.012 0.055 / 0.627);
+      --base-a12: color(display-p3 0 0.004 0.027 / 0.881);
+
+      --base-contrast: #ffffff;
       --base-surface: color(display-p3 1 1 1 / 80%);
-      --base-indicator: oklch(63.1% 0.004 264.5);
-      --base-track: oklch(63.1% 0.004 264.5);
-
-      --brand-1: oklch(99.4% 0 0);
-      --brand-2: oklch(98.5% 0 0);
-      --brand-3: oklch(96.1% 0 0);
-      --brand-4: oklch(93.5% 0 0);
-      --brand-5: oklch(90.6% 0 0);
-      --brand-6: oklch(86.8% 0 0);
-      --brand-7: oklch(82.2% 0 0);
-      --brand-8: oklch(75.3% 0 0);
-      --brand-9: oklch(37.1% 0 0);
-      --brand-10: oklch(43.5% 0 0);
-      --brand-11: oklch(53.2% 0 0);
-      --brand-12: oklch(34% 0 0);
-
-      --brand-a1: color(display-p3 0 0 0 / 0.008);
-      --brand-a2: color(display-p3 0 0 0 / 0.02);
-      --brand-a3: color(display-p3 0 0 0 / 0.051);
-      --brand-a4: color(display-p3 0 0 0 / 0.086);
-      --brand-a5: color(display-p3 0 0 0 / 0.122);
-      --brand-a6: color(display-p3 0 0 0 / 0.173);
-      --brand-a7: color(display-p3 0 0 0 / 0.231);
-      --brand-a8: color(display-p3 0 0 0 / 0.314);
-      --brand-a9: color(display-p3 0 0 0 / 0.749);
-      --brand-a10: color(display-p3 0 0 0 / 0.682);
-      --brand-a11: color(display-p3 0 0 0 / 0.576);
-      --brand-a12: color(display-p3 0 0 0 / 0.78);
-
-      --brand-contrast: #000000;
-      --brand-surface: color(display-p3 0.976 0.976 0.976 / 0.8);
-      --brand-indicator: oklch(37.1% 0 0);
-      --brand-track: oklch(37.1% 0 0);
-
-      color-scheme: dark;
+      --base-indicator: oklch(63.1% 0.016 277.7);
+      --base-track: oklch(63.1% 0.016 277.7);
     }
   }
 }
@@ -147,137 +162,150 @@
 .dark-theme,
 .theme-dark,
 [data-theme='dark'] {
-  --base-1: #080b14;
-  --base-2: #141822;
-  --base-3: #1c2130;
-  --base-4: #232938;
-  --base-5: #2a3040;
-  --base-6: #333949;
-  --base-7: #404758;
-  --base-8: #596072;
-  --base-9: #676d80;
-  --base-10: #747b8e;
-  --base-11: #abb3c7;
-  --base-12: #eaeef8;
+  --brand-1: #160f0d;
+  --brand-2: #201511;
+  --brand-3: #38190f;
+  --brand-4: #4f1602;
+  --brand-5: #5e1e07;
+  --brand-6: #6f2c15;
+  --brand-7: #873c23;
+  --brand-8: #ae4d2c;
+  --brand-9: #f50;
+  --brand-10: #ed4d00;
+  --brand-11: #ff976f;
+  --brand-12: #ffd8c9;
 
-  --base-a1: #00000000;
-  --base-a2: #c8dbf410;
-  --base-a3: #adc0fa1f;
-  --base-a4: #b5cbfa28;
-  --base-a5: #bdd0fe30;
-  --base-a6: #c6d6fe3a;
-  --base-a7: #c9daff4a;
-  --base-a8: #d3dfff66;
-  --base-a9: #d6dffd76;
-  --base-a10: #d7e2fe85;
-  --base-a11: #dde6fec3;
-  --base-a12: #f1f5fef8;
+  --brand-a1: #e6000006;
+  --brand-a2: #f24d0011;
+  --brand-a3: #fe42002a;
+  --brand-a4: #fd240043;
+  --brand-a5: #fe390053;
+  --brand-a6: #ff561965;
+  --brand-a7: #fd67337f;
+  --brand-a8: #fe6b39a9;
+  --brand-a9: #ff5500;
+  --brand-a10: #ff5200ec;
+  --brand-a11: #ff976f;
+  --brand-a12: #ffd8c9;
 
-  --base-contrast: #ffffff;
-  --base-surface: rgba(0, 0, 0, 0.05);
-  --base-indicator: #676d80;
-  --base-track: #676d80;
-
-  --brand-1: #0c0c0c;
-  --brand-2: #181818;
-  --brand-3: #222;
-  --brand-4: #2a2a2a;
-  --brand-5: #313131;
-  --brand-6: #3a3a3a;
-  --brand-7: #484848;
-  --brand-8: #616161;
-  --brand-9: #fafafa;
-  --brand-10: #f1f1f1;
-  --brand-11: #b4b4b4;
-  --brand-12: #eee;
-
-  --brand-a1: #b4600003;
-  --brand-a2: #f8e8580f;
-  --brand-a3: #fff6a319;
-  --brand-a4: #faf3b922;
-  --brand-a5: #fdf8c929;
-  --brand-a6: #fffbd632;
-  --brand-a7: #fefbe041;
-  --brand-a8: #fefcec5b;
-  --brand-a9: #fffffffa;
-  --brand-a10: #fefefef1;
-  --brand-a11: #fffffbb1;
-  --brand-a12: #fefefeee;
-
-  --brand-contrast: #311921;
-  --brand-surface: #26251c80;
-  --brand-indicator: #fafafa;
-  --brand-track: #fafafa;
+  --brand-contrast: #fff;
+  --brand-surface: #2f191080;
+  --brand-indicator: #f50;
+  --brand-track: #f50;
 }
 
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
-
     .dark,
     .dark-theme,
     .theme-dark,
     [data-theme='dark'] {
-      --base-1: oklch(15.1% 0.02 269.2);
-      --base-2: oklch(20.9% 0.021 269.2);
-      --base-3: oklch(25.1% 0.029 269.2);
-      --base-4: oklch(28.1% 0.03 269.2);
-      --base-5: oklch(31.1% 0.03 269.2);
-      --base-6: oklch(34.6% 0.03 269.2);
-      --base-7: oklch(39.8% 0.03 269.2);
-      --base-8: oklch(49% 0.03 269.2);
-      --base-9: oklch(53.7% 0.03 269.2);
-      --base-10: oklch(58.3% 0.03 269.2);
-      --base-11: oklch(76.8% 0.03 269.2);
-      --base-12: oklch(94.9% 0.014 269.2);
+      --brand-1: oklch(17.9% 0.013 38.8);
+      --brand-2: oklch(20.7% 0.02 38.8);
+      --brand-3: oklch(25.6% 0.052 38.8);
+      --brand-4: oklch(29.2% 0.09 38.8);
+      --brand-5: oklch(33.3% 0.099 38.8);
+      --brand-6: oklch(38.4% 0.101 38.8);
+      --brand-7: oklch(45.2% 0.11 38.8);
+      --brand-8: oklch(54% 0.136 38.8);
+      --brand-9: oklch(67.6% 0.217 38.8);
+      --brand-10: oklch(63.7% 0.217 38.8);
+      --brand-11: oklch(79.5% 0.185 38.8);
+      --brand-12: oklch(91.7% 0.056 38.8);
 
-      --base-a1: color(display-p3 0 0 0 / 0);
-      --base-a2: color(display-p3 0.824 0.894 0.992 / 0.06);
-      --base-a3: color(display-p3 0.698 0.769 1 / 0.119);
-      --base-a4: color(display-p3 0.729 0.816 1 / 0.153);
-      --base-a5: color(display-p3 0.749 0.82 1 / 0.187);
-      --base-a6: color(display-p3 0.788 0.843 1 / 0.225);
-      --base-a7: color(display-p3 0.796 0.859 0.996 / 0.289);
-      --base-a8: color(display-p3 0.843 0.886 1 / 0.395);
-      --base-a9: color(display-p3 0.859 0.89 1 / 0.454);
-      --base-a10: color(display-p3 0.863 0.902 1 / 0.513);
-      --base-a11: color(display-p3 0.882 0.914 0.996 / 0.755);
-      --base-a12: color(display-p3 0.953 0.965 0.996 / 0.967);
+      --brand-a1: color(display-p3 0.992 0 0 / 0.017);
+      --brand-a2: color(display-p3 0.996 0.353 0.004 / 0.055);
+      --brand-a3: color(display-p3 0.996 0.333 0.024 / 0.148);
+      --brand-a4: color(display-p3 1 0.22 0 / 0.236);
+      --brand-a5: color(display-p3 1 0.294 0.024 / 0.295);
+      --brand-a6: color(display-p3 1 0.404 0.173 / 0.362);
+      --brand-a7: color(display-p3 1 0.471 0.275 / 0.458);
+      --brand-a8: color(display-p3 0.996 0.49 0.294 / 0.61);
+      --brand-a9: color(display-p3 1 0.412 0.176 / 0.921);
+      --brand-a10: color(display-p3 1 0.396 0.165 / 0.849);
+      --brand-a11: color(display-p3 1 0.647 0.49 / 0.942);
+      --brand-a12: color(display-p3 1 0.875 0.816 / 0.975);
+
+      --brand-contrast: #fff;
+      --brand-surface: color(display-p3 0.165 0.094 0.059 / 0.5);
+      --brand-indicator: oklch(67.6% 0.217 38.8);
+      --brand-track: oklch(67.6% 0.217 38.8);
+    }
+  }
+}
+
+.dark,
+.dark-theme,
+.theme-dark,
+[data-theme='dark'] {
+  --base-1: #101113;
+  --base-2: #18191b;
+  --base-3: #212225;
+  --base-4: #282a2d;
+  --base-5: #2e3135;
+  --base-6: #373a3f;
+  --base-7: #44474e;
+  --base-8: #5c616a;
+  --base-9: #696e77;
+  --base-10: #777b84;
+  --base-11: #b0b4ba;
+  --base-12: #edeef0;
+
+  --base-a1: #0011130f;
+  --base-a2: #d8f4f609;
+  --base-a3: #ddeaf814;
+  --base-a4: #dcedf81d;
+  --base-a5: #d9edfe25;
+  --base-a6: #dbebfd30;
+  --base-a7: #dde9ff40;
+  --base-a8: #dae8fd5f;
+  --base-a9: #dfebfd6d;
+  --base-a10: #e5edfd7b;
+  --base-a11: #f1f7feb5;
+  --base-a12: #fcfdffef;
+
+  --base-contrast: #ffffff;
+  --base-surface: rgba(0, 0, 0, 0.05);
+  --base-indicator: #696e77;
+  --base-track: #696e77;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    .dark,
+    .dark-theme,
+    .theme-dark,
+    [data-theme='dark'] {
+      --base-1: oklch(17.9% 0.004 262.3);
+      --base-2: oklch(21.3% 0.004 262.3);
+      --base-3: oklch(25.3% 0.006 262.3);
+      --base-4: oklch(28.3% 0.007 262.3);
+      --base-5: oklch(31.1% 0.008 262.3);
+      --base-6: oklch(34.6% 0.01 262.3);
+      --base-7: oklch(39.8% 0.012 262.3);
+      --base-8: oklch(49% 0.016 262.3);
+      --base-9: oklch(53.7% 0.015 262.3);
+      --base-10: oklch(58.3% 0.014 262.3);
+      --base-11: oklch(76.8% 0.011 262.3);
+      --base-12: oklch(94.9% 0.003 262.3);
+
+      --base-a1: color(display-p3 0.004 0.067 0.075 / 0.059);
+      --base-a2: color(display-p3 0.875 0.992 1 / 0.034);
+      --base-a3: color(display-p3 0.882 0.933 0.992 / 0.077);
+      --base-a4: color(display-p3 0.882 0.953 0.996 / 0.111);
+      --base-a5: color(display-p3 0.878 0.929 0.996 / 0.145);
+      --base-a6: color(display-p3 0.886 0.929 1 / 0.187);
+      --base-a7: color(display-p3 0.898 0.929 1 / 0.246);
+      --base-a8: color(display-p3 0.886 0.925 1 / 0.365);
+      --base-a9: color(display-p3 0.898 0.937 1 / 0.42);
+      --base-a10: color(display-p3 0.918 0.945 1 / 0.475);
+      --base-a11: color(display-p3 0.961 0.976 0.996 / 0.704);
+      --base-a12: color(display-p3 0.988 0.992 1 / 0.937);
 
       --base-contrast: #ffffff;
       --base-surface: color(display-p3 0 0 0 / 5%);
-      --base-indicator: oklch(53.7% 0.03 269.2);
-      --base-track: oklch(53.7% 0.03 269.2);
-
-      --brand-1: oklch(15.3% 0 0);
-      --brand-2: oklch(21.1% 0 0);
-      --brand-3: oklch(25.3% 0 0);
-      --brand-4: oklch(28.3% 0 0);
-      --brand-5: oklch(31.3% 0 0);
-      --brand-6: oklch(35% 0 0);
-      --brand-7: oklch(40.1% 0 0);
-      --brand-8: oklch(49.2% 0 0);
-      --brand-9: oklch(98.5% 0 0);
-      --brand-10: oklch(95.7% 0 0);
-      --brand-11: oklch(77% 0 0);
-      --brand-12: oklch(94.9% 0 0);
-
-      --brand-a1: color(display-p3 0.914 0.482 0 / 0.009);
-      --brand-a2: color(display-p3 0.988 0.925 0.416 / 0.058);
-      --brand-a3: color(display-p3 1 0.965 0.678 / 0.098);
-      --brand-a4: color(display-p3 1 0.973 0.761 / 0.131);
-      --brand-a5: color(display-p3 0.996 0.976 0.812 / 0.16);
-      --brand-a6: color(display-p3 1 0.984 0.855 / 0.196);
-      --brand-a7: color(display-p3 1 0.988 0.894 / 0.254);
-      --brand-a8: color(display-p3 1 0.992 0.937 / 0.356);
-      --brand-a9: color(display-p3 1 1 1 / 0.98);
-      --brand-a10: color(display-p3 1 1 1 / 0.943);
-      --brand-a11: color(display-p3 1 1 0.984 / 0.694);
-      --brand-a12: color(display-p3 1 1 1 / 0.931);
-
-      --brand-contrast: #311921;
-      --brand-surface: color(display-p3 0.149 0.141 0.11 / 0.5);
-      --brand-indicator: oklch(98.5% 0 0);
-      --brand-track: oklch(98.5% 0 0);
+      --base-indicator: oklch(53.7% 0.015 262.3);
+      --base-track: oklch(53.7% 0.015 262.3);
     }
   }
 }

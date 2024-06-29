@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import Component from '../../_Component.astro'
+
+type Props = Omit<HTMLAttributes<'input'>, 'type'> & {
+  color?: 'base' | 'brand'
+}
+
+const { name, ...rest } = Astro.props
+---
+
+<Component
+  class:list={['checkbox-element']}
+  as="input"
+  type="checkbox"
+  id={name}
+  if={name}
+  {name}
+  {...rest}
+/>
+
+<style is:global lang="scss">
+  @import '../../../css/utils.scss';
+
+  @include component('checkbox-element') {
+    display: block;
+    width: var(--text-label);
+    height: var(--text-label);
+    accent-color: var(--solid);
+  }
+</style>

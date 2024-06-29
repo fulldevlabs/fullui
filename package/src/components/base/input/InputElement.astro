@@ -1,55 +1,54 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import Component from '../_Component.astro'
-import Label from '../typography/Label.astro'
+import Component from '../../_Component.astro'
 
 type Props = HTMLAttributes<'input'> & {
-  label?: string
   variant?: 'outline'
 }
 
-const { label, variant = 'outline', ...rest } = Astro.props
+const { variant = 'outline', type = 'text', ...rest } = Astro.props
 ---
 
-<Label text={label} />
 <Component
-  class:list={['input']}
-  if={true}
   as="input"
+  class="input-element"
+  if={true}
   {variant}
   {...rest}
 />
 
 <style is:global lang="scss">
-  @import '../../css/utils.scss';
+  @import '../../../css/utils.scss';
 
-  @include component('input') {
+  @include component('input-element') {
     display: flex;
     position: relative;
     align-items: center;
     outline: none;
-    box-shadow: inset 0 0 0 var(--border-width) var(--border-outline);
-    border: 0px;
+    border: 1px solid var(--border);
     border-radius: var(--radius-1);
-    background-color: var(--input-background);
+    background-color: var(--background);
     padding: var(--element-2);
     width: 100%;
     min-width: var(--element-2);
     height: calc(var(--text-label) + 2 * var(--element-3));
-    color: var(--foreground);
+    color: var(--text);
     font-weight: var(--font-weight);
     font-size: var(--text-label);
     line-height: 1.25;
     font-family: var(--font-family);
 
+    &::placeholder {
+      color: var(--text);
+    }
+
     &:hover {
       outline: none;
-      box-shadow: inset 0 0 0 1px var(--border-hover);
     }
 
     &:focus {
       outline: none;
-      box-shadow: inset 0 0 0 3px var(--border-hover);
+      box-shadow: inset 0 0 0 2px var(--border);
     }
 
     &:disabled {

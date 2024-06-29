@@ -1,14 +1,39 @@
 ---
-import type { ComponentProps, Polymorphic } from 'astro/types'
+import type {
+  ComponentProps,
+  HTMLAttributes,
+  HTMLTag,
+  Polymorphic,
+} from 'astro/types'
 import Component from '../../_Component.astro'
+import Box from '../../segment/Box.astro'
 import Label from '../../typography/Label.astro'
-import SelectField from './SelectField.astro'
+import Icon from '../Icon.astro'
+import { default as SelectElement } from './SelectElement.astro'
+import SelectOption from './SelectOption.astro'
 
-type Props<As extends 'div'> = Polymorphic<{ as: As }> & {
-  label?: ComponentProps<typeof Label> | ComponentProps<typeof Label>['html']
-} & Pick<ComponentProps<typeof SelectField>, 'name' | 'placeholder' | 'options'>
+type Props<As extends HTMLTag = 'div'> = Polymorphic<{ as: As }> &
+  Pick<ComponentProps<typeof SelectElement>, 'name' | 'required' | 'disabled'> &
+  HTMLAttributes<'select'> & {
+    color?: 'base' | 'brand'
+    label?: string
+    placeholder?: string
+    options?: string[]
+    value?: string
+  }
 
-const { as = 'div', label, name, placeholder, options, ...rest } = Astro.props
+const {
+  as = 'div',
+  label,
+  placeholder,
+  options,
+  value,
+  // select attributes
+  name,
+  required,
+  disabled,
+  ...rest
+} = Astro.props
 ---
 
 <Component
@@ -18,15 +43,33 @@ const { as = 'div', label, name, placeholder, options, ...rest } = Astro.props
 >
   <Label
     for={name}
-    text={label}
+    {...typeof label === 'string' ? { text: label } : label}
   />
-  <SelectField
-    {name}
-    {placeholder}
-    {options}
-  >
-    <slot />
-  </SelectField>
+  <Box>
+    <SelectElement
+      id={name}
+      {name}
+      {required}
+      {disabled}
+    >
+      <SelectOption
+        text={placeholder}
+        disabled
+        selected
+      />
+      {
+        options?.map((option: any) => (
+          <SelectOption
+            selected={value === option}
+            text={option}
+            value={option}
+          />
+        ))
+      }
+      <slot />
+    </SelectElement>
+    <Icon name="chevron-down" />
+  </Box>
 </Component>
 
 <style is:global lang="scss">
@@ -38,5 +81,12 @@ const { as = 'div', label, name, placeholder, options, ...rest } = Astro.props
     flex-direction: column;
     gap: var(--space-1);
     width: 100%;
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: var(--element-2);
+      transform: translateY(-50%);
+    }
   }
 </style>

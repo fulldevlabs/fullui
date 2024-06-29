@@ -3,70 +3,56 @@ title: List
 description: A native, styled list element with list items inside.
 props:
   list:
-    - prop: items
-      type: string | array
+    - name: items
+      type: string[]
       value: ['Item 1', 'Item 2', 'Item 3']
-    - prop: size
-      type: 'sm | md | lg'
-      default: md
-    - prop: compact
+    - name: size
+      type: xs | sm | md | lg | xl
+    - name: color
+      type: base | accent
+    - name: contrast
       type: boolean
-      default: false
-    - prop: variant
-      type: 'base | muted'
-      default: base
-    - prop: theme
-      type: string
-    - prop: text
-      type: string
-    - prop: html
-      type: string
-    - prop: as
-      type: string
+    - name: as
+      type: HTMLTag
       default: ul
+    - name: HTML Attributes
+      type: Polymorphic<as>
   listItem:
-    - prop: text
+    - name: html
       type: string
-    - prop: html
+    - name: text
       type: string
+    - name: as
+      type: HTMLTag
+      default: li
+    - name: HTML Attributes
+      type: Polymorphic<as>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-import CompactProp from '../../props/CompactProp.mdx'
 import VariantProp from '../../props/VariantProp.mdx'
+import Story from '../../../components/Story.astro'
 
 {frontmatter.description}
 
 <br />
 
-```astro live
----
-import { List, ListItem } from 'fulldev-ui'
----
-
-<List>
-  <ListItem>Item 1</ListItem>
-  <ListItem>Item 2</ListItem>
-  <ListItem>Item 3</ListItem>
-</List>
-```
+<Story title={frontmatter.title} props={frontmatter.props.list} />
 
 ## Props
 
-### Table: `<List>`
+### `<List>`
 
 <PropsTable props={frontmatter.props.list} />
 
-### Table: `<ListItem>`
+### `<ListItem>`
 
 <PropsTable props={frontmatter.props.listItem} />
 
 ## Examples
 
 ### `items`
-
-**Type:** `(ListItem | string)[]`
 
 ```astro live
 ---
@@ -90,21 +76,7 @@ import { List } from 'fulldev-ui'
 <List size="lg" items={['Item 1', 'Item 2']} />
 ```
 
-### `compact`
-
-<CompactProp />
-
-```astro live
----
-import { List } from 'fulldev-ui'
----
-
-<List density="compact" size="sm" items={['Item 1', 'Item 2']} />
-<List density="compact" size="md" items={['Item 1', 'Item 2']} />
-<List density="compact" size="lg" items={['Item 1', 'Item 2']} />
-```
-
-### `variant`
+### `color`
 
 <VariantProp />
 
@@ -113,6 +85,18 @@ import { List } from 'fulldev-ui'
 import { List } from 'fulldev-ui'
 ---
 
-<List variant="base" items={['Item 1', 'Item 2']} />
-<List variant="muted" items={['Item 1', 'Item 2']} />
+<List color="base" items={['Item 1', 'Item 2']} />
+<List color="brand" items={['Item 1', 'Item 2']} />
+```
+
+### `contrast`
+
+Set to `true` by default on Headings, which you can override by setting it to `false`.
+
+```astro live
+---
+import { List } from 'fulldev-ui'
+---
+
+<List contrast={false} items={['Item 1', 'Item 2']} />
 ```

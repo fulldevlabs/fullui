@@ -164,6 +164,13 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
+"base/image.mdx": {
+	id: "base/image.mdx";
+  slug: "base/image";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "base/input.mdx": {
 	id: "base/input.mdx";
   slug: "base/input";
@@ -304,9 +311,16 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"typography/paragraph.mdx": {
-	id: "typography/paragraph.mdx";
-  slug: "typography/paragraph";
+"typography/tagline.mdx": {
+	id: "typography/tagline.mdx";
+  slug: "typography/tagline";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"typography/text.mdx": {
+	id: "typography/text.mdx";
+  slug: "typography/text";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -339,13 +353,6 @@ declare module 'astro:content' {
 "CompactProp.mdx": {
 	id: "CompactProp.mdx";
   slug: "compactprop";
-  body: string;
-  collection: "props";
-  data: any
-} & { render(): Render[".mdx"] };
-"HtmlProp.mdx": {
-	id: "HtmlProp.mdx";
-  slug: "htmlprop";
   body: string;
   collection: "props";
   data: any

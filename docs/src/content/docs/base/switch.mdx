@@ -2,40 +2,33 @@
 title: Switch
 description: A native checkbox input, styled as a switch with pure CSS.
 props:
-  - prop: size
+  - name: color
+    type: 'base | brand'
+  - name: size
     type: 'sm | md | lg'
-    default: md
-  - prop: compact
-    type: boolean
-    default: false
-  - prop: theme
+    default: xs
+  - name: text
     type: string
-  - prop: text
+  - name: html
     type: string
-  - prop: html
-    type: string
-  - prop: as
-    type: string
+  - name: as
+    type: HTMLTag
     default: span
     value: span # Required for showcasing on /components
+  - name: HTML Attributes
+    type: Polymorphic<as>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
+import Story from '../../../components/Story.astro'
 
 {frontmatter.description}
 
 <br />
 
-```astro live
----
-import { Switch } from 'fulldev-ui'
----
-
-<Switch />
-```
+<Story {...frontmatter} />
 
 ## Props
 
@@ -66,7 +59,7 @@ import { Switch } from 'fulldev-ui'
 import { Switch } from 'fulldev-ui'
 ---
 
-<Switch density="compact" size="sm" />
-<Switch density="compact" size="md" />
-<Switch density="compact" size="lg" />
+<Switch compact size="sm" />
+<Switch compact size="md" />
+<Switch compact size="lg" />
 ```

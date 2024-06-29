@@ -1,23 +1,82 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+import type { ComponentProps, Polymorphic } from 'astro/types'
+import Component from '../../_Component.astro'
+import Box from '../../segment/Box.astro'
 import Label from '../../typography/Label.astro'
-import InputField from './InputField.astro'
+import Icon from '../Icon.astro'
+import InputElement from './InputElement.astro'
 
-type Props = HTMLAttributes<'input'> & {
-  name?: string
-  label?: string
-  variant?: 'outline'
-}
+type Props<As extends 'div'> = Polymorphic<{ as: As }> &
+  Pick<
+    ComponentProps<typeof InputElement>,
+    | 'variant'
+    | 'placeholder'
+    | 'type'
+    | 'name'
+    | 'value'
+    | 'disabled'
+    | 'required'
+  > & {
+    color?: 'base' | 'brand'
+    label?: string
+    icon?: string
+  }
 
-const { name, label, variant = 'outline', ...rest } = Astro.props
+const {
+  as = 'div',
+  label,
+  icon,
+  variant,
+  // input attributes
+  name,
+  placeholder,
+  type,
+  value,
+  disabled,
+  required,
+  ...rest
+} = Astro.props
 ---
 
-<Label
-  text={label}
-  for={name}
-/>
-<InputField
-  name={name}
-  variant={variant}
+<Component
   class:list={['input']}
-/>
+  {as}
+  {...rest}
+>
+  <Label
+    for={name}
+    text={label}
+  />
+  <Box>
+    <InputElement
+      id={name}
+      {name}
+      {variant}
+      {placeholder}
+      {type}
+      {value}
+      {disabled}
+      {required}
+    />
+    <Icon name={icon} />
+  </Box>
+</Component>
+
+<style is:global lang="scss">
+  @import '../../../css/utils.scss';
+
+  @include component('input') {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 100%;
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: var(--element-2);
+      transform: translateY(-50%);
+    }
+  }
+</style>

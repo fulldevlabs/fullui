@@ -2,28 +2,28 @@
 title: Box
 description: General Segment that you always use when none of the others props are applicable.
 props:
-  - prop: structure
-    type: 'row | column | split | spread | grid | bento | masonry | carousel'
-  - prop: size
-    type: 'sm | md | lg'
-    default: 'md'
-  - prop: compact
-    type: 'boolean'
-    default: false
-  - prop: theme
+  - name: structure
+    type: row | column | split | spread | grid | bento | masonry | carousel
+    value: column
+  - name: size
+    type: sm | md | lg
+  - name: compact
+    type: attribute
+  - name: theme
     type: string
-  - prop: text
+  - name: text
     type: string
-  - prop: html
+  - name: html
     type: string
-  - prop: as
-    type: string
-    default: section
+  - name: as
+    type: HTMLTag
+    default: div
+  - name: HTML Attributes
+    type: Polymorphic<as>
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
 import SizeProp from '../../props/SizeProp.mdx'
-
 import CarouselProp from '../../props/structures/Carousel.mdx'
 import ColumnProp from '../../props/structures/Column.mdx'
 import GridProp from '../../props/structures/Grid.mdx'
@@ -31,19 +31,26 @@ import MasonryProp from '../../props/structures/Masonry.mdx'
 import RowProp from '../../props/structures/Row.mdx'
 import SplitProp from '../../props/structures/Split.mdx'
 import SpreadProp from '../../props/structures/Spread.mdx'
+import Story from '../../../components/Story.astro'
+import DecorativeBox from '../../../components/DecorativeBox.astro'
 
 {frontmatter.description}
 
 <br />
 
+<Story {...frontmatter}>
+  <DecorativeBox />
+  <DecorativeBox />
+</Story>
+
 ```astro live
 ---
-import { Box, Card } from 'fulldev-ui'
+import { Box, Button, Card } from 'fulldev-ui'
 ---
 
 <Box structure="column">
   <Card>Card</Card>
-  <Card>Card</Card>
+  <Button>Button</Button>
 </Box>
 ```
 

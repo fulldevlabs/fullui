@@ -1,48 +1,36 @@
 ---
 title: Radio
 description: A native, styled radio input element.
-sidebar:
-  hidden: true
 props:
-  - prop: size
+  - name: color
+    type: 'base | brand'
+  - name: size
     type: 'sm | md | lg'
-    default: md
-  - prop: compact
-    type: boolean
-    default: false
-  - prop: text
+  - name: label
     type: string
-  - prop: html
+    default: label ?? name
+  - name: text
     type: string
-  - prop: theme
+  - name: html
     type: string
-  - prop: as
-    type: string
-    default: input
 ---
 
 import PropsTable from '../../../components/PropsTable.astro'
-
 import SizeProp from '../../props/SizeProp.mdx'
 import CompactProp from '../../props/CompactProp.mdx'
-import VariantProp from '../../props/VariantProp.mdx'
+import Story from '../../../components/Story.astro'
 
 {frontmatter.description}
 
 <br />
 
-```astro live
----
-import { Label, Radio } from 'fulldev-ui'
----
-
-<Radio id="radio" name="component" value="radio" />
-<Label text="Radio" for="radio" />
-```
+<Story {...frontmatter} />
 
 ## Props
 
 <PropsTable props={frontmatter.props} />
+
+## Examples
 
 ### `size`
 
@@ -50,12 +38,14 @@ import { Label, Radio } from 'fulldev-ui'
 
 ```astro live
 ---
-import { Radio } from 'fulldev-ui'
+import { Group, Radio } from 'fulldev-ui'
 ---
 
-<Radio size="sm" />
-<Radio size="md" />
-<Radio size="lg" />
+<Group>
+  <Radio size="sm" name="size" />
+  <Radio size="md" name="size" />
+  <Radio size="lg" name="size" />
+</Group>
 ```
 
 ### `compact`
@@ -64,10 +54,12 @@ import { Radio } from 'fulldev-ui'
 
 ```astro live
 ---
-import { Radio } from 'fulldev-ui'
+import { Group, Radio } from 'fulldev-ui'
 ---
 
-<Radio density="compact" size="sm" />
-<Radio density="compact" size="md" />
-<Radio density="compact" size="lg" />
+<Group>
+  <Radio compact size="sm" name="density" />
+  <Radio compact size="md" name="density" />
+  <Radio compact size="lg" name="density" />
+</Group>
 ```

@@ -1,15 +1,14 @@
 ---
-import type { ComponentProps, HTMLTag, Polymorphic } from 'astro/types'
+import type { HTMLTag, Polymorphic } from 'astro/types'
 import Component from '../_Component.astro'
 
-type Props<As extends HTMLTag = 'h2'> = Polymorphic<{ as: As }> &
-  ComponentProps<typeof Component> & {
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
-    color?: 'base' | 'brand'
-    contrast?: boolean
-    html?: string
-    text?: string
-  }
+type Props<As extends HTMLTag = 'h2'> = Polymorphic<{ as: As }> & {
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
+  color?: 'base' | 'brand'
+  contrast?: boolean
+  html?: string
+  text?: string
+}
 
 const { as = 'h2', contrast = true, ...rest } = Astro.props
 ---
@@ -30,16 +29,13 @@ const { as = 'h2', contrast = true, ...rest } = Astro.props
     margin: 0;
     max-width: calc(var(--element-3) * 36);
     scroll-margin: var(--space-4);
-    color: var(--foreground);
+    color: var(--text);
     font-weight: var(--heading-font-weight);
+    font-weight: 700;
     font-size: var(--text-heading);
     line-height: 1.1;
     font-family: var(--heading-font-family);
     letter-spacing: -0.025em;
     text-decoration: none;
-
-    &.contrast {
-      color: var(--foreground-contrast);
-    }
   }
 </style>
