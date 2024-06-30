@@ -2,18 +2,15 @@
 import type { HTMLAttributes } from 'astro/types'
 import Component from '../../_Component.astro'
 
-type Props = HTMLAttributes<'input'> & {
-  variant?: 'outline'
-}
+type Props = HTMLAttributes<'input'>
 
-const { variant = 'outline', type = 'text', ...rest } = Astro.props
+const { type = 'text', ...rest } = Astro.props
 ---
 
 <Component
   as="input"
   class="input-element"
   if={true}
-  {variant}
   {...rest}
 />
 

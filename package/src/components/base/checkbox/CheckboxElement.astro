@@ -2,9 +2,7 @@
 import type { HTMLAttributes } from 'astro/types'
 import Component from '../../_Component.astro'
 
-type Props = Omit<HTMLAttributes<'input'>, 'type'> & {
-  color?: 'base' | 'brand'
-}
+type Props = Omit<HTMLAttributes<'input'>, 'type'>
 
 const { name, ...rest } = Astro.props
 ---

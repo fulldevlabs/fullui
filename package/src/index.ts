@@ -50,7 +50,13 @@ export { default as Card } from './components/segment/Card.astro'
 export { default as Deck } from './components/segment/Deck.astro'
 export { default as Group } from './components/segment/Group.astro'
 export { default as Header } from './components/segment/Header.astro'
-export { default as Section } from './components/segment/Section.astro'
+export { default as Section } from './components/segment/section/Section.astro'
+export { default as SectionActions } from './components/segment/section/SectionActions.astro'
+export {
+  default as SectionContent,
+  default as SectionWriteup,
+} from './components/segment/section/SectionContent.astro'
+export { default as SectionMedia } from './components/segment/section/SectionMedia.astro'
 
 // Utility components
 export { default as Block } from './components/_Block.astro'

@@ -1,0 +1,34 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+import Component from '../../_Component.astro'
+
+type Props<As extends HTMLTag = 'div'> = Polymorphic<{ as: As }> & {
+  align?: 'start' | 'center' | 'end'
+}
+
+const { as = 'div', align, ...rest } = Astro.props
+---
+
+<Component
+  class:list={['section-content']}
+  {as}
+  {align}
+  {...rest}
+>
+  <slot />
+</Component>
+
+<style is:global lang="scss">
+  @import '../../../css/utils.scss';
+
+  @include component('section-content') {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+
+    &.align-centter,
+    &.align-centter > .full {
+      text-align: center;
+    }
+  }
+</style>

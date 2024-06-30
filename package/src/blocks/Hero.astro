@@ -1,0 +1,53 @@
+---
+import type { ComponentProps } from 'astro/types'
+import {
+  Badge,
+  Box,
+  Button,
+  Group,
+  Heading,
+  Image,
+  Section,
+  Tagline,
+  Text,
+} from 'fulldev-ui'
+
+interface Props extends ComponentProps<typeof Section> {
+  badge?: string | ComponentProps<typeof Badge>
+  heading?: string | ComponentProps<typeof Heading>
+  text?: string | ComponentProps<typeof Text>
+  image?: string | ComponentProps<typeof Image>
+  buttons?: ComponentProps<typeof Button>[]
+}
+
+const {
+  tagline,
+  badge,
+  heading,
+  text,
+  buttons,
+  image,
+  align,
+  structure,
+  ...rest
+} = Astro.props
+---
+
+<Section
+  {structure}
+  {align}
+  {...rest}
+>
+  <Box
+    structure="column"
+    align={structure !== 'column' ? 'start' : align}
+  >
+    <Tagline {...typeof tagline === 'string' ? { text: tagline } : tagline} />
+    <Heading {...typeof heading === 'string' ? { text: heading } : heading} />
+    <Text {...typeof text === 'string' ? { text: text } : text} />
+  </Box>
+  <Group>
+    {buttons?.map((button) => <Button {...button} />)}
+  </Group>
+  <Image {...typeof image === 'string' ? { src: image } : image} />
+</Section>

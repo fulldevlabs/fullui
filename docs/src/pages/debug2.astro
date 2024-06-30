@@ -1,0 +1,28 @@
+---
+import { Button, Heading, Layout, Section, Text } from 'fulldev-ui'
+---
+
+<Layout>
+  <Section
+    class="wrapper"
+    structure="split"
+  >
+    <Fragment slot="writeup">
+      <Heading>Hello world</Heading>
+      <Text>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, autem!
+      </Text>
+    </Fragment>
+    <Fragment slot="actions">
+      <Button>Button</Button>
+      <Button>Button</Button>
+    </Fragment>
+    <h1>Another heading below</h1>
+    <div
+      slot="media"
+      style={{ background: 'blue', height: '500px', width: '100%' }}
+    >
+      MEDIA
+    </div>
+  </Section>
+</Layout>

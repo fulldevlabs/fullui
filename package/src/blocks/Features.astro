@@ -1,0 +1,59 @@
+---
+import type { ComponentProps } from 'astro/types'
+import {
+  Box,
+  Button,
+  Card,
+  Deck,
+  Heading,
+  Icon,
+  Paragraph,
+  Section,
+  Tagline,
+  Text,
+} from 'fulldev-ui'
+
+interface Props {
+  tagline?: string | ComponentProps<typeof Tagline>
+  heading?: string | ComponentProps<typeof Heading>
+  text?: string | ComponentProps<typeof Text>
+  button?: ComponentProps<typeof Button>
+  cards?: {
+    icon: ComponentProps<typeof Icon>['name']
+    heading: ComponentProps<typeof Heading>['html']
+    paragraph: ComponentProps<typeof Paragraph>['html']
+  }[]
+}
+
+const { heading, button, cards } = Astro.props
+---
+
+<Section class="features">
+  <Box
+    structure="column"
+    align={structure !== 'column' ? 'start' : align}
+  >
+    <Tagline {...typeof tagline === 'string' ? { text: tagline } : tagline} />
+    <Heading {...typeof heading === 'string' ? { text: heading } : heading} />
+    <Text {...typeof text === 'string' ? { text: text } : text} />
+  </Box>
+
+  <Box structure="spread">
+    <Heading html={heading} />
+    <Button
+      variant="soft"
+      {...button}
+    />
+  </Box>
+  <Deck compact={false}>
+    {
+      cards?.map(({ icon, heading, paragraph }) => (
+        <Card frame="fill">
+          <Icon name={icon} />
+          <Heading html={heading} />
+          <Paragraph html={paragraph} />
+        </Card>
+      ))
+    }
+  </Deck>
+</Section>
