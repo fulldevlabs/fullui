@@ -1,0 +1,151 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+import Component from '../_Component.astro'
+
+type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> & {
+  theme?: 'light' | 'dark'
+  color?: 'base' | 'brand'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
+  frame?: 'contain' | 'fill' | 'panel' | 'viewport'
+  variant?: 'subtle' | 'outline' | 'soft' | 'surface' | 'solid'
+  align?: 'start' | 'center' | 'end'
+  structure?: 'stack' | 'split' | 'spread'
+}
+
+const {
+  as = 'section',
+  frame = 'contain',
+  structure = 'stack',
+  align = 'start',
+  ...rest
+} = Astro.props
+---
+
+<Component
+  class:list={['section']}
+  {as}
+  {frame}
+  {structure}
+  {align}
+  {...rest}
+>
+  <slot />
+</Component>
+
+<style is:global lang="scss">
+  @import '../../css/utils.scss';
+
+  @include component('section') {
+    --screen: 1536px;
+    --inner-x: min(var(--gutter), var(--space-6));
+    --inner-y: var(--space-6);
+    --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
+
+    position: relative;
+    padding-top: var(--inner-y);
+    padding-bottom: var(--inner-y);
+    width: 100%;
+
+    &.frame-fill {
+      background-color: var(--background);
+      padding-right: var(--gutter);
+      padding-left: var(--gutter);
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    &.frame-viewport {
+      background-color: var(--background);
+      padding-right: var(--gutter);
+      padding-left: var(--gutter);
+      max-width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    &.frame-contain {
+      margin-right: var(--gutter);
+      margin-left: var(--gutter);
+      max-width: calc(100% - var(--gutter) * 2);
+    }
+
+    &.frame-panel {
+      position: relative;
+      margin-top: var(--inner-y);
+      margin-right: var(--gutter);
+      margin-bottom: var(--inner-y);
+      margin-left: var(--gutter);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-3);
+      background-color: var(--background);
+      padding: var(--inner-y) var(--inner-x);
+      max-width: calc(100% - var(--gutter) * 2);
+      overflow: hidden;
+    }
+
+    &.structure-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+    }
+
+    // &.structure-split {
+    //   display: grid;
+    //   gap: var(--space-6);
+    //   width: 100%;
+
+    //   @media (min-width: 1024px) {
+    //     grid-template-columns: 1fr 1fr;
+    //     grid-auto-flow: column;
+
+    //     // & > :nth-child(2n + 1) {
+    //     //   grid-column: span 2;
+    //     // }
+    //   }
+    // }
+
+    /* Horizontal with equa columns */
+    &.structure-split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+
+      @media (min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+
+        & > :not(:nth-child(1), :nth-child(2)) {
+          grid-column: span 2;
+        }
+      }
+    }
+
+    &.structure-spread {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+
+      @media (min-width: 1024px) {
+        grid-template-columns: fit-content fit-content;
+        justify-content: space-between;
+
+        & > :not(:nth-child(1), :nth-child(2)) {
+          grid-column: span 2;
+        }
+      }
+    }
+
+    /* Horizontal with space-between */
+    .structure-wide {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: stretch;
+      gap: var(--space-4);
+      width: 100%;
+
+      & > .full {
+        width: auto;
+      }
+    }
+  }
+</style>
