@@ -1,0 +1,47 @@
+---
+import type { ComponentProps } from 'astro/types'
+import {
+  Box,
+  Button,
+  Group,
+  Heading,
+  Image,
+  Section,
+  Text,
+  Writeup,
+} from 'fulldev-ui'
+
+interface Props extends ComponentProps<typeof Section> {
+  title?: string
+  description?: string
+  buttons?: ComponentProps<typeof Button>[]
+  image?: string
+  scheme?: 'light' | 'dark'
+  color?: 'base' | 'brand'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
+  variant?: 'subtle' | 'outline' | 'soft' | 'solid' | 'surface'
+  frame?: 'fill' | 'panel' | 'viewport'
+  align?: 'start' | 'center' | 'end'
+  structure?: 'stack' | 'split' | 'spread'
+}
+
+const { title, description, buttons, image, align, structure, ...rest } =
+  Astro.props
+---
+
+<Section
+  {align}
+  structure="split"
+  {...rest}
+>
+  <Box structure="column">
+    <Writeup>
+      <Heading text={title} />
+      <Text text={description} />
+    </Writeup>
+    <Group structure="row">
+      {buttons?.map((button) => <Button {...button} />)}
+    </Group>
+  </Box>
+  <Image src={image} />
+</Section>

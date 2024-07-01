@@ -1,7 +1,6 @@
 ---
 import type { ComponentProps } from 'astro/types'
 import {
-  Badge,
   Box,
   Button,
   Group,
@@ -13,28 +12,19 @@ import {
 } from 'fulldev-ui'
 
 interface Props extends ComponentProps<typeof Section> {
-  badge?: string | ComponentProps<typeof Badge>
-  heading?: string | ComponentProps<typeof Heading>
-  text?: string | ComponentProps<typeof Text>
-  image?: string | ComponentProps<typeof Image>
+  title?: string | ComponentProps<typeof Heading>
+  description?: string | ComponentProps<typeof Text>
   buttons?: ComponentProps<typeof Button>[]
+  image?: string | ComponentProps<typeof Image>
+  structure?: 'stack' | 'spread' | 'split'
+  panel?: boolean
 }
 
-const {
-  tagline,
-  badge,
-  heading,
-  text,
-  buttons,
-  image,
-  align,
-  structure,
-  ...rest
-} = Astro.props
+const { title, description, buttons, image, align, structure, ...rest } =
+  Astro.props
 ---
 
-<Section
-  {structure}
+<Hero
   {align}
   {...rest}
 >
@@ -50,4 +40,4 @@ const {
     {buttons?.map((button) => <Button {...button} />)}
   </Group>
   <Image {...typeof image === 'string' ? { src: image } : image} />
-</Section>
+</Hero>
