@@ -6,8 +6,8 @@ type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> & {
   theme?: 'light' | 'dark'
   color?: 'base' | 'brand'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
-  variant?: 'ghost' | 'subtle' | 'outline' | 'soft' | 'surface' | 'solid'
-  frame?: 'center' | 'right' | 'left' | 'top' | 'bottom'
+  variant?: 'subtle' | 'outline' | 'soft' | 'surface' | 'solid'
+  frame?: 'container' | 'wrapper' | 'gutter' | 'none'
   align?: 'start' | 'center' | 'end'
   structure?:
     | 'row'
@@ -22,7 +22,7 @@ type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> & {
 
 const {
   as = 'div',
-  frame = 'contain',
+  frame = 'container',
   structure = 'column',
   ...rest
 } = Astro.props
@@ -43,51 +43,70 @@ const {
 
   @include component('section') {
     --screen: 1536px;
-    --inner-x: min(var(--gutter), var(--space-6));
-    --inner-y: var(--space-6);
     --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
 
     position: relative;
-    border-radius: min(var(--radius-3), calc((100vw - 100%) * 999));
-    padding-top: var(--inner-y);
-    padding-bottom: var(--inner-y);
     width: 100%;
 
-    &.frame-contain {
-      margin-right: var(--gutter);
-      margin-left: var(--gutter);
-      max-width: calc(100% - var(--gutter) * 2);
+    &.frame-container {
+      padding: var(--space-6) calc(var(--gutter) + var(--space-6));
     }
 
-    &.frame-fill {
-      background-color: var(--background);
+    &.frame-gutter {
       padding-right: var(--gutter);
       padding-left: var(--gutter);
-      max-width: 100%;
-      overflow: hidden;
     }
 
-    &.frame-viewport {
-      background-color: var(--background);
-      padding-right: var(--gutter);
-      padding-left: var(--gutter);
-      max-width: 100%;
-      min-height: 100vh;
-      overflow: hidden;
+    &.frame-wrapper {
+      gap: var(--space-5);
+      padding: var(--space-6);
     }
 
-    &.frame-panel {
-      position: relative;
-      margin-top: var(--inner-y);
-      margin-right: var(--gutter);
-      margin-bottom: var(--inner-y);
-      margin-left: var(--gutter);
+    &.variant-subtle,
+    &.variant-outline,
+    &.variant-soft,
+    &.variant-surface,
+    &.variant-solid {
       border: 1px solid var(--border);
-      border-radius: var(--radius-3);
+      border-radius: min(var(--radius-3), calc((100vw - 100%) * 999));
       background-color: var(--background);
-      padding: var(--inner-y) var(--inner-x);
-      max-width: calc(100% - var(--gutter) * 2);
-      overflow: hidden;
     }
+
+    // &.frame-contain {
+    //   margin-right: var(--gutter);
+    //   margin-left: var(--gutter);
+    //   max-width: calc(100% - var(--gutter) * 2);
+    // }
+
+    // &.frame-fill {
+    //   background-color: var(--background);
+    //   padding-right: var(--gutter);
+    //   padding-left: var(--gutter);
+    //   max-width: 100%;
+    //   overflow: hidden;
+    // }
+
+    // &.frame-viewport {
+    //   background-color: var(--background);
+    //   padding-right: var(--gutter);
+    //   padding-left: var(--gutter);
+    //   max-width: 100%;
+    //   min-height: 100vh;
+    //   overflow: hidden;
+    // }
+
+    // &.frame-panel {
+    //   position: relative;
+    //   margin-top: var(--inner-y);
+    //   margin-right: var(--gutter);
+    //   margin-bottom: var(--inner-y);
+    //   margin-left: var(--gutter);
+    //   border: 1px solid var(--border);
+    //   border-radius: var(--radius-3);
+    //   background-color: var(--background);
+    //   padding: var(--inner-y) var(--inner-x);
+    //   max-width: calc(100% - var(--gutter) * 2);
+    //   overflow: hidden;
+    // }
   }
 </style>

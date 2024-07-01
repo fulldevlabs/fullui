@@ -1,75 +1,75 @@
-  // --screen: 1536px;
-// --inner-x: min(var(--gutter), var(--space-6));
-// --inner-y: var(--space-6);
-// --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
+//   // --screen: 1536px;
+// // --inner-x: min(var(--gutter), var(--space-6));
+// // --inner-y: var(--space-6);
+// // --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
 
-// position: relative;
-// padding-top: var(--inner-y);
-// padding-bottom: var(--inner-y);
-// width: 100%;
+// // position: relative;
+// // padding-top: var(--inner-y);
+// // padding-bottom: var(--inner-y);
+// // width: 100%;
 
-// contain, fill, panel
+// // contain, fill, panel
 
-@mixin frame-gutter {
-  padding-left: 4vw;
-  padding-right: 4vw;
-}
+// @mixin frame-gutter {
+//   padding-left: 4vw;
+//   padding-right: 4vw;
+// }
 
-@mixin frame-wrapper {
-  padding: 60px;
-}
+// @mixin frame-wrapper {
+//   padding: 60px;
+// }
 
-@mixin frame-container {
-  padding-left: calc(4vw + 60px);
-  padding-right: calc(4vw + 60px);
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
+// @mixin frame-container {
+//   padding-left: calc(4vw + 60px);
+//   padding-right: calc(4vw + 60px);
+//   padding-top: 60px;
+//   padding-bottom: 60px;
+// }
 
-// 
-// 
-// 
+// // 
+// // 
+// // 
 
-@mixin frame-contain {
-  margin-right: var(--gutter);
-  margin-left: var(--gutter);
-  margin: var(--spacer) var(--gutter);
-  padding: var(--inset-y) var(--inset-x);
-  max-width: calc(100% - (2* var(--gutter)));
-}
+// @mixin frame-contain {
+//   margin-right: var(--gutter);
+//   margin-left: var(--gutter);
+//   margin: var(--spacer) var(--gutter);
+//   padding: var(--inset-y) var(--inset-x);
+//   max-width: calc(100% - (2* var(--gutter)));
+// }
 
-@mixin frame-fill {
-  --inner-x: 0;
-  --inner-y: 0;
-  --outer-x: max(4vw, calc(100vw - var(--screen, 1536px)) / 2);
-  --outer-y: var(--space-6);
+// @mixin frame-fill {
+//   --inner-x: 0;
+//   --inner-y: 0;
+//   --outer-x: max(4vw, calc(100vw - var(--screen, 1536px)) / 2);
+//   --outer-y: var(--space-6);
 
-  background-color: var(--background);
-  padding-right: var(--gutter);
-  padding-left: var(--gutter);
-  max-width: 100%;
-  overflow: hidden;
-}
+//   background-color: var(--background);
+//   padding-right: var(--gutter);
+//   padding-left: var(--gutter);
+//   max-width: 100%;
+//   overflow: hidden;
+// }
 
-@mixin frame-viewport {
-  background-color: var(--background);
-  padding-right: var(--gutter);
-  padding-left: var(--gutter);
-  max-width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
-}
+// @mixin frame-viewport {
+//   background-color: var(--background);
+//   padding-right: var(--gutter);
+//   padding-left: var(--gutter);
+//   max-width: 100%;
+//   min-height: 100vh;
+//   overflow: hidden;
+// }
 
-@mixin frame-panel {
-  position: relative;
-  margin-top: var(--inner-y);
-  margin-right: var(--gutter);
-  margin-bottom: var(--inner-y);
-  margin-left: var(--gutter);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-3);
-  background-color: var(--background);
-  padding: var(--inner-y) var(--inner-x);
-  max-width: calc(100% - var(--gutter) * 2);
-  overflow: hidden;
-}
+// @mixin frame-panel {
+//   position: relative;
+//   margin-top: var(--inner-y);
+//   margin-right: var(--gutter);
+//   margin-bottom: var(--inner-y);
+//   margin-left: var(--gutter);
+//   border: 1px solid var(--border);
+//   border-radius: var(--radius-3);
+//   background-color: var(--background);
+//   padding: var(--inner-y) var(--inner-x);
+//   max-width: calc(100% - var(--gutter) * 2);
+//   overflow: hidden;
+// }

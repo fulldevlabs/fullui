@@ -47,10 +47,10 @@ export { default as Prose } from './components/_todo/Prose.astro'
 export { default as Writeup } from './components/_todo/Writeup.astro'
 export { default as Box } from './components/segment/Box.astro'
 export { default as Card } from './components/segment/Card.astro'
-export { default as Section } from './components/segment/CleanedSection.astro'
 export { default as Deck } from './components/segment/Deck.astro'
 export { default as Group } from './components/segment/Group.astro'
 export { default as Header } from './components/segment/Header.astro'
+export { default as Section } from './components/segment/Section.astro'
 
 // Utility components
 export { default as Block } from './components/_Block.astro'

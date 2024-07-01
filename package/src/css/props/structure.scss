@@ -170,6 +170,11 @@
     .icon + .full {
       margin-left: var(--space-5);
     }
+
+    [class*="frame-"] + .full,
+    .full + [class*="frame-"] {
+      margin-left: 0;
+    }
   }
 }
 
@@ -216,6 +221,11 @@
     .image + .full,
     .icon + .full {
       margin-top: var(--space-5);
+    }
+
+    [class*="frame-"] + .full,
+    .full + [class*="frame-"] {
+      margin-top: 0;
     }
   }
 }

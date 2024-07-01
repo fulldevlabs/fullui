@@ -1,6 +1,6 @@
 ---
 import { getEntry } from 'astro:content'
-import { Box, Button, Heading, Image, Layout, Section } from 'fulldev-ui'
+import { Button, Heading, Image, Layout, Section } from 'fulldev-ui'
 import 'fulldev-ui/radix'
 
 const { data, render } = await getEntry('pages', 'index')
@@ -16,31 +16,18 @@ const { Content } = await render()
     theme: 'dark',
   }}
 >
-  <div class="mywrapper">hello there</div>
-  <!-- <Section>
-    <Spread>
-      <Heading>hello world</Heading>
-      <Button>click me</Button>
-    </Spread>
-    <Image src="/example.jpg" />
-  </Section>
-
-  <Section>
-    <Box structure="spread">
-      <Heading>hello world</Heading>
-      <Button>click me</Button>
-    </Box>
-    <Image src="/example.jpg" />
-  </Section> -->
-
   <Section
     structure="split"
-    style={{ background: 'blue', margin: 0, maxWidth: '1400px' }}
+    frame="gutter"
   >
-    <Box frame="wrapper">
+    <Section
+      structure="column"
+      frame="wrapper"
+    >
       <Heading>hello world</Heading>
-      <Image src="/example.jpg" />
-    </Box>
+      <Button>click me</Button>
+    </Section>
+    <Image src="/example.jpg" />
   </Section>
 </Layout>
 
