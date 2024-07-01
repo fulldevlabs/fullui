@@ -1,20 +1,14 @@
-.align-start {
+@mixin align-start {
   align-items: flex-start;
+  @content;
 }
 
-.align-center {
+@mixin align-center {
   align-items: center;
-  text-align: var(--space-x, center);
-
-  & > * > * {
-    text-align: left;
-  }
+  @content;
 }
 
-.align-end {
+@mixin align-end {
   align-items: flex-end;
-}
-
-.align-stretch {
-  align-items: stretch;
+  @content;
 }

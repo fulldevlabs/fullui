@@ -1,32 +1,29 @@
 ---
-import type { ComponentProps, HTMLTag, Polymorphic } from 'astro/types'
+import type { HTMLTag, Polymorphic } from 'astro/types'
 import Component from '../_Component.astro'
 
-type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> &
-  ComponentProps<typeof Component> & {
-    scheme?: 'light' | 'dark'
-    color?: 'base' | 'brand'
-    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
-    compact?: boolean
-    frame?: 'container' | 'wrapper' | 'panel' | 'viewport' | 'none'
-    variant?: 'fill' | 'subtle' | 'outline' | 'soft' | 'solid' | 'surface'
-    align?: 'start' | 'center' | 'end' | 'stretch'
-    structure?:
-      | 'row'
-      | 'column'
-      | 'split'
-      | 'spread'
-      | 'grid'
-      | 'bento'
-      | 'masonry'
-      | 'carousel'
-  }
+type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> & {
+  theme?: 'light' | 'dark'
+  color?: 'base' | 'brand'
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl'
+  variant?: 'ghost' | 'subtle' | 'outline' | 'soft' | 'surface' | 'solid'
+  frame?: 'center' | 'right' | 'left' | 'top' | 'bottom'
+  align?: 'start' | 'center' | 'end'
+  structure?:
+    | 'row'
+    | 'column'
+    | 'split'
+    | 'spread'
+    | 'grid'
+    | 'bento'
+    | 'masonry'
+    | 'carousel'
+}
 
 const {
-  frame = 'container',
-  structure = 'column',
-  variant = frame === 'panel' ? 'subtle' : 'fill',
   as = 'div',
+  frame = 'contain',
+  structure = 'column',
   ...rest
 } = Astro.props
 ---
@@ -35,7 +32,6 @@ const {
   class:list={['section']}
   {as}
   {frame}
-  {variant}
   {structure}
   {...rest}
 >
@@ -46,26 +42,52 @@ const {
   @import '../../css/utils.scss';
 
   @include component('section') {
+    --screen: 1536px;
+    --inner-x: min(var(--gutter), var(--space-6));
     --inner-y: var(--space-6);
+    --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
+
     position: relative;
+    border-radius: min(var(--radius-3), calc((100vw - 100%) * 999));
     padding-top: var(--inner-y);
     padding-bottom: var(--inner-y);
-
     width: 100%;
 
-    &.frame-wrapper {
+    &.frame-contain {
+      margin-right: var(--gutter);
+      margin-left: var(--gutter);
+      max-width: calc(100% - var(--gutter) * 2);
+    }
+
+    &.frame-fill {
       background-color: var(--background);
+      padding-right: var(--gutter);
+      padding-left: var(--gutter);
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    &.frame-viewport {
+      background-color: var(--background);
+      padding-right: var(--gutter);
+      padding-left: var(--gutter);
+      max-width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
     }
 
     &.frame-panel {
+      position: relative;
       margin-top: var(--inner-y);
+      margin-right: var(--gutter);
       margin-bottom: var(--inner-y);
+      margin-left: var(--gutter);
       border: 1px solid var(--border);
+      border-radius: var(--radius-3);
       background-color: var(--background);
-    }
-
-    &:not(.frame-panel) {
-      box-shadow: none !important;
+      padding: var(--inner-y) var(--inner-x);
+      max-width: calc(100% - var(--gutter) * 2);
+      overflow: hidden;
     }
   }
 </style>

@@ -9,7 +9,7 @@ type Props<As extends HTMLTag = 'section'> = Polymorphic<{ as: As }> & {
   frame?: 'contain' | 'fill' | 'panel' | 'viewport'
   variant?: 'subtle' | 'outline' | 'soft' | 'surface' | 'solid'
   align?: 'start' | 'center' | 'end'
-  structure?: 'stack' | 'split' | 'spread'
+  structure?: 'column' | 'row' | 'spread' | 'split'
 }
 
 const {

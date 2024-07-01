@@ -1,153 +1,75 @@
-:root {
-  --screen: 1536px;
+  // --screen: 1536px;
+// --inner-x: min(var(--gutter), var(--space-6));
+// --inner-y: var(--space-6);
+// --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
+
+// position: relative;
+// padding-top: var(--inner-y);
+// padding-bottom: var(--inner-y);
+// width: 100%;
+
+// contain, fill, panel
+
+@mixin frame-gutter {
+  padding-left: 4vw;
+  padding-right: 4vw;
 }
 
-.frame-wrapper,
-.frame-viewport,
-.frame-container,
-.frame-panel {
-  --gutter: max(4vw, calc(100vw - var(--screen)) / 2);
+@mixin frame-wrapper {
+  padding: 60px;
 }
 
-.frame-wrapper,
-.frame-viewport {
-  --inner-x: var(--gutter);
-
-  padding-right: var(--gutter);
-  padding-left: var(--gutter);
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-
-  &:is(.split > &) {
-    @media (min-width: 768px) {
-      &:not(:first-child) {
-        padding-left: 0;
-      }
-
-      &:not(:last-child) {
-        padding-right: 0;
-      }
-    }
-  }
+@mixin frame-container {
+  padding-left: calc(4vw + 60px);
+  padding-right: calc(4vw + 60px);
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
 
-.frame-viewport {
-  min-height: 100%;
-}
+// 
+// 
+// 
 
-.frame-container {
+@mixin frame-contain {
   margin-right: var(--gutter);
   margin-left: var(--gutter);
-  max-width: calc(100% - var(--gutter) * 2);
-
-  &:is(.split > &) {
-    @media (min-width: 768px) {
-      &:not(:first-child) {
-        margin-left: 0;
-      }
-
-      &:not(:last-child) {
-        margin-right: 0;
-      }
-    }
-  }
+  margin: var(--spacer) var(--gutter);
+  padding: var(--inset-y) var(--inset-x);
+  max-width: calc(100% - (2* var(--gutter)));
 }
 
-.frame-panel {
-  --inner-x: var(--space-6);
-  --inner-y: var(--space-6);
+@mixin frame-fill {
+  --inner-x: 0;
+  --inner-y: 0;
+  --outer-x: max(4vw, calc(100vw - var(--screen, 1536px)) / 2);
+  --outer-y: var(--space-6);
 
-  position: relative;
-  border-radius: var(--radius-3);
-  padding: var(--inner-y) var(--inner-x);
-  width: 100%;
+  background-color: var(--background);
+  padding-right: var(--gutter);
+  padding-left: var(--gutter);
+  max-width: 100%;
   overflow: hidden;
-
-  &.section {
-    --inner-x: min(var(--gutter), var(--space-6));
-
-    margin-right: var(--gutter);
-    margin-left: var(--gutter);
-    max-width: calc(100% - var(--gutter) * 2);
-  }
 }
 
-.frame-inset {
-  &:is(.structure-column > &) {
-    margin-right: calc(var(--inner-x) * -1);
-    margin-left: calc(var(--inner-x) * -1);
-    width: calc(100% + var(--inner-x) * 2);
-
-    &:first-child {
-      margin-top: calc(var(--inner-y) * -1);
-      height: calc(100% + var(--inner-y) * 1);
-    }
-
-    &:last-child {
-      margin-bottom: calc(var(--inner-y) * -1);
-      height: calc(100% + var(--inner-y) * 1);
-    }
-  }
-
-  &:is(.structure-split > &) {
-    @media (max-width: 1023.999px) {
-      margin-right: calc(var(--inner-x) * -1);
-      margin-left: calc(var(--inner-x) * -1);
-      width: calc(100% + var(--inner-x) * 2);
-
-      &:first-child {
-        margin-top: calc(var(--inner-y) * -1);
-        height: calc(100% + var(--inner-y) * 1);
-      }
-
-      &:last-child {
-        margin-bottom: calc(var(--inner-y) * -1);
-        height: calc(100% + var(--inner-y) * 1);
-      }
-    }
-
-    @media (min-width: 1024px) {
-      margin-top: calc(var(--inner-y) * -1);
-      margin-bottom: calc(var(--inner-y) * -1);
-      height: calc(100% + var(--inner-y) * 2);
-
-      &:first-child {
-        margin-left: calc(var(--inner-x) * -1);
-        width: calc(100% + var(--inner-x) * 1);
-      }
-
-      &:last-child {
-        margin-right: calc(var(--inner-x) * -1);
-        width: calc(100% + var(--inner-x) * 1);
-      }
-    }
-  }
+@mixin frame-viewport {
+  background-color: var(--background);
+  padding-right: var(--gutter);
+  padding-left: var(--gutter);
+  max-width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-.frame-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.frame-background {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  order: 1;
-  z-index: -1;
-  margin: 0 !important;
-  border-radius: 0;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  object-fit: cover;
-
-  ~ .full {
-    position: relative;
-    z-index: 1;
-  }
+@mixin frame-panel {
+  position: relative;
+  margin-top: var(--inner-y);
+  margin-right: var(--gutter);
+  margin-bottom: var(--inner-y);
+  margin-left: var(--gutter);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-3);
+  background-color: var(--background);
+  padding: var(--inner-y) var(--inner-x);
+  max-width: calc(100% - var(--gutter) * 2);
+  overflow: hidden;
 }
